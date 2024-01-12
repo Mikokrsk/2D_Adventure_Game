@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public InputAction MoveAction;
     [SerializeField] private Vector2 move;
     [SerializeField] private Rigidbody2D rigidbody2d;
+    [SerializeField] private Animator animator;
+    [SerializeField] private Vector2 moveDirection = new Vector2(1, 0);
     [SerializeField] public int maxHealth = 5;
     [SerializeField] public float speed = 3.0f;
     [SerializeField] public int currentHealth;
@@ -23,6 +25,7 @@ public class PlayerController : MonoBehaviour
         Application.targetFrameRate = 60;
         MoveAction.Enable();
         rigidbody2d = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -37,7 +40,15 @@ public class PlayerController : MonoBehaviour
                 isInvincible = false;
             }
         }
-        
+
+        if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
+        {
+            moveDirection.Set(move.x, move.y);
+            moveDirection.Normalize();
+        }
+        animator.SetFloat("Move X", moveDirection.x);
+        animator.SetFloat("Move Y", moveDirection.y);
+        animator.SetFloat("Speed", move.magnitude);
     }
 
 
@@ -57,6 +68,7 @@ public class PlayerController : MonoBehaviour
             }
             isInvincible = true;
             damageCooldown = timeInvincible;
+            animator.SetTrigger("Hit");
         }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         UIHandler.instance.SetHealthValue(currentHealth / (float)maxHealth);

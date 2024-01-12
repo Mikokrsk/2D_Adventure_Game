@@ -11,14 +11,17 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float timer;
     [SerializeField] private int direction = 1;
     [SerializeField] private Rigidbody2D rigidbody2d;
+    [SerializeField] private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         timer = changeTime;
     }
     private void Update()
     {
+
         timer -= Time.deltaTime;
         if (timer < 0)
         {
@@ -34,10 +37,14 @@ public class EnemyController : MonoBehaviour
 
         if (vertical)
         {
+            animator.SetFloat("Move X", 0);
+            animator.SetFloat("Move Y", direction);
             position.y = position.y + speed * direction * Time.deltaTime;
         }
         else
         {
+            animator.SetFloat("Move X", direction);
+            animator.SetFloat("Move Y", 0);
             position.x = position.x + speed * direction * Time.deltaTime;
         }
 

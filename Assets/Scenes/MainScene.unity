@@ -3086,6 +3086,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 435467dcaa7e6ac44aaf0ce51717f214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1977989830 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3824135628767375269, guid: 9517d13a917c445489f884e37437f49b, type: 3}
+  m_PrefabInstance: {fileID: 2834263822158228254}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1977989836
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977989830}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 34d36e1bead33a942930d6f3d41aa8fa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2070361186
 GameObject:
   m_ObjectHideFlags: 0
@@ -3349,7 +3375,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3824135628767375269, guid: 9517d13a917c445489f884e37437f49b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1977989836}
   m_SourcePrefab: {fileID: 100100000, guid: 9517d13a917c445489f884e37437f49b, type: 3}
 --- !u!1001 &4088206363602866305
 PrefabInstance:
@@ -3516,6 +3545,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 162486932936725186, guid: 8546ee92972636f49a7ca7ac28da206b, type: 3}
       propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731231686392667481, guid: 8546ee92972636f49a7ca7ac28da206b, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5200273978684851748, guid: 8546ee92972636f49a7ca7ac28da206b, type: 3}
