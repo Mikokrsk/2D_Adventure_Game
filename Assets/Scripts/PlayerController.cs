@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] public InputAction MoveAction;
     [SerializeField] public InputAction launchAction;
+    [SerializeField] public InputAction talkAction;
     [SerializeField] private Vector2 move;
     [SerializeField] private Rigidbody2D rigidbody2d;
     [SerializeField] private Animator animator;
@@ -27,7 +28,9 @@ public class PlayerController : MonoBehaviour
         Application.targetFrameRate = 60;
         MoveAction.Enable();
         launchAction.Enable();
+        talkAction.Enable();
         launchAction.performed += Launch;
+        talkAction.performed += FindFriend;
         rigidbody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
@@ -85,5 +88,22 @@ public class PlayerController : MonoBehaviour
         projectile.Launch(moveDirection, 300);
         projectile.startPosition = transform.position;
         animator.SetTrigger("Launch");
+    }
+    void FindFriend(InputAction.CallbackContext context)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position + Vector2.up * 0.2f, moveDirection, 1.5f, LayerMask.GetMask("NPC"));
+        if (hit.collider != null)
+        {
+            Debug.Log("Raycast has hit the object " + hit.collider.gameObject);
+
+            NonPlayerCharacter character = hit.collider.GetComponent<NonPlayerCharacter>();
+            if (character != null)
+            {
+                character.DisplayDialogue();
+                // UIHandler.instance.DisplayDialogue();
+            }
+
+
+        }
     }
 }
