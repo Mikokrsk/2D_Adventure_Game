@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2126087879144369295}
   - component: {fileID: 7715023521602032148}
   - component: {fileID: 4667415108108598348}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,3 +172,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody2d: {fileID: 0}
+  startPosition: {x: 0, y: 0, z: 0}
+  distance: 15

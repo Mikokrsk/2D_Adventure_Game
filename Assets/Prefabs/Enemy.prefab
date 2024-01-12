@@ -103,9 +103,11 @@ MonoBehaviour:
   speed: 1
   vertical: 0
   changeTime: 3
+  aggressive: 1
   timer: 0
   direction: 1
   rigidbody2d: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!61 &1399842393472954627
 BoxCollider2D:
   m_ObjectHideFlags: 0

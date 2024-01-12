@@ -83,6 +83,7 @@ public class PlayerController : MonoBehaviour
         GameObject projectileObject = Instantiate(projectilePrefab, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
         Projectile projectile = projectileObject.GetComponent<Projectile>();
         projectile.Launch(moveDirection, 300);
+        projectile.startPosition = transform.position;
         animator.SetTrigger("Launch");
     }
 }

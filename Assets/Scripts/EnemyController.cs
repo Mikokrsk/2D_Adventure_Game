@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
     public float speed;
     public bool vertical;
     public float changeTime = 3.0f;
+    [SerializeField] private bool aggressive = true;
     [SerializeField] private float timer;
     [SerializeField] private int direction = 1;
     [SerializeField] private Rigidbody2D rigidbody2d;
@@ -33,6 +34,11 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!aggressive)
+        {
+            return;
+        }
+
         Vector2 position = rigidbody2d.position;
 
         if (vertical)
@@ -66,5 +72,16 @@ public class EnemyController : MonoBehaviour
         var randomAxis = (UnityEngine.Random.Range(0, 2) == 0);
 
         return randomAxis;
+    }
+
+    public void Fix()
+    {
+        if (!aggressive)
+        {
+            Destroy(gameObject);
+        }
+        aggressive = false;
+        //rigidbody2d.simulated = false;
+        animator.SetTrigger("Fixed");
     }
 }
