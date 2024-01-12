@@ -5,9 +5,11 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] public InputAction MoveAction;
+    [SerializeField] public InputAction launchAction;
     [SerializeField] private Vector2 move;
     [SerializeField] private Rigidbody2D rigidbody2d;
     [SerializeField] private Animator animator;
+    [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Vector2 moveDirection = new Vector2(1, 0);
     [SerializeField] public int maxHealth = 5;
     [SerializeField] public float speed = 3.0f;
@@ -24,6 +26,8 @@ public class PlayerController : MonoBehaviour
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
         MoveAction.Enable();
+        launchAction.Enable();
+        launchAction.performed += Launch;
         rigidbody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
@@ -72,5 +76,13 @@ public class PlayerController : MonoBehaviour
         }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         UIHandler.instance.SetHealthValue(currentHealth / (float)maxHealth);
+    }
+
+    void Launch(InputAction.CallbackContext context)
+    {
+        GameObject projectileObject = Instantiate(projectilePrefab, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
+        Projectile projectile = projectileObject.GetComponent<Projectile>();
+        projectile.Launch(moveDirection, 300);
+        animator.SetTrigger("Launch");
     }
 }
