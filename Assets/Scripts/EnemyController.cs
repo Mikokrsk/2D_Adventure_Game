@@ -13,11 +13,13 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private int direction = 1;
     [SerializeField] private Rigidbody2D rigidbody2d;
     [SerializeField] private Animator animator;
+    [SerializeField] private AudioSource audioWalk;
     // Start is called before the first frame update
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        audioWalk = GetComponent<AudioSource>();
         timer = changeTime;
     }
     private void Update()
@@ -83,5 +85,6 @@ public class EnemyController : MonoBehaviour
         aggressive = false;
         //rigidbody2d.simulated = false;
         animator.SetTrigger("Fixed");
+        audioWalk.mute = true;
     }
 }

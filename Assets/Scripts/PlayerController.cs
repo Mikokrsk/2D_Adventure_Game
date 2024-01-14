@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D rigidbody2d;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] private Vector2 moveDirection = new Vector2(1, 0);
     [SerializeField] public int maxHealth = 5;
     [SerializeField] public float speed = 3.0f;
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour
         talkAction.performed += FindFriend;
         rigidbody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -105,5 +107,10 @@ public class PlayerController : MonoBehaviour
 
 
         }
+    }
+
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
 }
