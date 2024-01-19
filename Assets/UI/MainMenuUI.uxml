@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="SettingsMenuUI" src="project://database/Assets/UI/SettingsMenuUI.uxml?fileID=9197481963319205126&amp;guid=556c9dbfd8315074aa0a983cc194c611&amp;type=3#SettingsMenuUI" />
+    <ui:VisualElement style="flex-grow: 1; height: 0; width: 30%; position: relative; align-items: center; justify-content: center; align-self: center;">
+        <ui:Button text="OpenSettingsMenu" parse-escape-sequences="true" display-tooltip-when-elided="true" name="OpenSettingsMenuButton" style="white-space: nowrap; width: 100%; height: 10%; font-size: 40%; -unity-font-style: bold;" />
+    </ui:VisualElement>
+    <ui:Instance template="SettingsMenuUI" name="SettingsMenuUI" style="align-items: center; display: none; position: absolute; justify-content: space-around; align-self: center; top: 10%; width: 55%; height: 75%;" />
+</ui:UXML>

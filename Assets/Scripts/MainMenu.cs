@@ -6,26 +6,27 @@ using UnityEngine.UIElements;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private UIDocument _uiDocument;
-    [SerializeField] private VisualElement _closeButton;
-    [SerializeField] private VisualElement _mainMenu;
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private SettingsMenu _settingsMenu;
+    public static MainMenu Instance { get; private set; }
+
+    private void Awake()
     {
-         _uiDocument = GetComponent<UIDocument>();
-        _closeButton = _uiDocument.rootVisualElement.Q<Button>("CloseButton");
-        _mainMenu = _uiDocument.rootVisualElement.Q<VisualElement>("SettingMenu");
-        _uiDocument.rootVisualElement.Q<Button>("CloseButton").clicked += () => { CloseMenu(); };
+        Instance = this;
+        _uiDocument = GetComponent<UIDocument>();
+        _uiDocument.rootVisualElement.Q<Button>("OpenSettingsMenuButton").clicked += OpenSettingsMenu;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-
+        
+    }
+    public UIDocument GetUIDocument()
+    {
+        return _uiDocument;
     }
 
-    private void CloseMenu()
+    private void OpenSettingsMenu()
     {
-        Debug.Log("CloseMenu");
-        _mainMenu.style.display = DisplayStyle.None;
+        _settingsMenu.OpenMenu();
     }
 }

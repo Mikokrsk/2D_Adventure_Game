@@ -1,0 +1,26 @@
+.button-style {
+    width: 45%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: auto;
+    background-image: url('project://database/Assets/Art/Ruby/UI/UIDialogueBox.png?fileID=21300000&guid=c4592e9bd029fcc45843314f2192f59e&type=3#UIDialogueBox');
+    background-color: rgba(188, 188, 188, 0);
+    font-size: 45%;
+    -unity-font-style: bold;
+    -unity-slice-top: initial;
+    -unity-slice-left: initial;
+    -unity-slice-right: initial;
+    -unity-slice-bottom: initial;
+    display: flex;
+    visibility: visible;
+    overflow: hidden;
+    margin-bottom: -2px;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    -unity-slice-scale: 1.8px;
+    -unity-background-scale-mode: stretch-to-fill;
+}
