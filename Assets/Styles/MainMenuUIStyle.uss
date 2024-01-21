@@ -1,0 +1,29 @@
+.menu-window-style {
+    flex-grow: 1;
+    height: 75%;
+    width: 30%;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    flex-shrink: 1;
+    flex-direction: column;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    -unity-text-align: upper-left;
+    flex-basis: auto;
+    background-image: url('project://database/Assets/Assets/2D%20Casual%20UI/Sprite/GUI.png?fileID=21300056&guid=1eaee135ce037439d925cee5e41ce026&type=3#GUI_28');
+    left: 35%;
+    top: 10%;
+    max-height: none;
+}
+
+.menu-button-style {
+    white-space: nowrap;
+    width: 80%;
+    height: 10%;
+    -unity-font-style: bold;
+    font-size: 40px;
+}

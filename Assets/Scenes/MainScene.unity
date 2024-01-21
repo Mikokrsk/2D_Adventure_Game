@@ -6944,6 +6944,7 @@ GameObject:
   - component: {fileID: 1603891249}
   - component: {fileID: 1603891248}
   - component: {fileID: 1603891250}
+  - component: {fileID: 1603891251}
   m_Layer: 5
   m_Name: UIDocument
   m_TagString: Untagged
@@ -6996,6 +6997,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayTime: 4
   m_TimerDisplay: 0
+--- !u!114 &1603891251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603891247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86dff9343673f5f4e8e4cab1e4421f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uiDocument: {fileID: 1603891248}
+  _openGameMenu:
+    m_Name: Open Game Menu
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: a0c081de-a3c9-443b-8cfe-6a3380cd452e
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 7eb165ae-2e49-407a-8736-9819a1aca2cd
+      m_Path: <Keyboard>/escape
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Open Game Menu
+      m_Flags: 0
+    m_Flags: 0
 --- !u!1 &1874997857
 GameObject:
   m_ObjectHideFlags: 0
