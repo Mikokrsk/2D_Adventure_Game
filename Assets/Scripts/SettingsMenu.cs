@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class SettingsMenu : MonoBehaviour
 {
     [SerializeField] private UIDocument _uiDocument;
-    [SerializeField] private VisualElement _settingsMenu;   
+    [SerializeField] private VisualElement _settingsMenu;
 
     void Start()
     {

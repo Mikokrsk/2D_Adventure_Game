@@ -1,7 +1,10 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="SettingsMenuUI" src="project://database/Assets/UI/SettingsMenuUI.uxml?fileID=9197481963319205126&amp;guid=556c9dbfd8315074aa0a983cc194c611&amp;type=3#SettingsMenuUI" />
-    <ui:VisualElement style="flex-grow: 1; height: 0; width: 30%; position: relative; align-items: center; justify-content: center; align-self: center;">
-        <ui:Button text="OpenSettingsMenu" parse-escape-sequences="true" display-tooltip-when-elided="true" name="OpenSettingsMenuButton" style="white-space: nowrap; width: 100%; height: 10%; font-size: 40%; -unity-font-style: bold;" />
+    <ui:Template name="LevelsMenuUI" src="project://database/Assets/UI/LevelsMenuUI.uxml?fileID=9197481963319205126&amp;guid=43981baf685c6b144baf4acac0aaa5b5&amp;type=3#LevelsMenuUI" />
+    <ui:VisualElement style="flex-grow: 1; height: 75%; width: 30%; position: absolute; align-items: center; justify-content: center; align-self: center; flex-shrink: 1; flex-direction: column; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; -unity-text-align: upper-left; flex-basis: auto; background-image: url(&apos;project://database/Assets/Assets/2D%20Casual%20UI/Sprite/GUI.png?fileID=21300056&amp;guid=1eaee135ce037439d925cee5e41ce026&amp;type=3#GUI_28&apos;); left: 35%; top: 10%; max-height: none;">
+        <ui:Button text="Start" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StartButton" style="white-space: nowrap; width: 80%; height: 10%; font-size: 40%; -unity-font-style: bold;" />
+        <ui:Button text="OpenSettingsMenu" parse-escape-sequences="true" display-tooltip-when-elided="true" name="OpenSettingsMenuButton" style="white-space: nowrap; width: 80%; height: 10%; font-size: 40%; -unity-font-style: bold; margin-top: 40px;" />
     </ui:VisualElement>
-    <ui:Instance template="SettingsMenuUI" name="SettingsMenuUI" style="align-items: center; display: none; position: absolute; justify-content: space-around; align-self: center; top: 10%; width: 55%; height: 75%;" />
+    <ui:Instance template="SettingsMenuUI" name="SettingsMenuUI" style="align-items: center; display: none; position: absolute; justify-content: space-around; align-self: center; top: 10%; width: 55%; height: 75%; background-image: none;" />
+    <ui:Instance template="LevelsMenuUI" name="LevelsMenuUI" style="position: relative; align-items: center; justify-content: flex-start; align-self: center; width: 80%; height: 90%; top: 5%; display: none;" />
 </ui:UXML>

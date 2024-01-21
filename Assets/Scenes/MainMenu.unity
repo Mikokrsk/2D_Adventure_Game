@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 169313953}
   - component: {fileID: 169313955}
   - component: {fileID: 169313956}
+  - component: {fileID: 169313957}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -185,8 +186,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 585229e3bc0771841bc40636de9f49c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uiDocument: {fileID: 0}
+  _uiDocument: {fileID: 169313953}
   _settingsMenu: {fileID: 169313956}
+  _loadLevelsMenu: {fileID: 169313957}
 --- !u!114 &169313956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,7 +201,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32f93e15dbc5ae4f9b4590f37b7d7d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uiDocument: {fileID: 0}
+  _uiDocument: {fileID: 169313953}
+--- !u!114 &169313957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169313952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e76ebc479b2f5844951671e448f1da1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uiDocument: {fileID: 169313953}
 --- !u!1 &472317405
 GameObject:
   m_ObjectHideFlags: 0

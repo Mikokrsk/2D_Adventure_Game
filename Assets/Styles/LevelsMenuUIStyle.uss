@@ -1,0 +1,30 @@
+.level-container {
+    width: 30%;
+    height: 100%;
+    flex-grow: 1;
+}
+
+.row-level {
+    height: 100%;
+    flex-direction: row;
+    position: absolute;
+    width: 100%;
+    max-height: none;
+    margin-top: 3%;
+}
+
+.level-image {
+    height: 425px;
+    background-image: url('project://database/Assets/Art/Ducko/Environmnent/DamageZone.png?fileID=21300000&guid=3325234d9883550489ddb29f3e66f9c1&type=3#DamageZone');
+    width: 425px;
+    flex-grow: 5;
+    align-self: center;
+}
+
+.load-level-button {
+    flex-grow: 1;
+    align-self: center;
+    width: 60%;
+    height: 20%;
+    background-color: rgb(0, 0, 255);
+}
