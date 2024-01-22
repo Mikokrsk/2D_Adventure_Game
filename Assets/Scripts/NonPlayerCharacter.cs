@@ -8,6 +8,6 @@ public class NonPlayerCharacter : MonoBehaviour
     
     public void DisplayDialogue()
     {
-        UIHandler.instance.DisplayDialogue(m_DialogText);
+        UIHandler.Instance.DisplayDialogue(m_DialogText);
     }
 }

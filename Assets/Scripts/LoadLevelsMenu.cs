@@ -7,28 +7,26 @@ using UnityEngine.UIElements;
 
 public class LoadLevelsMenu : MonoBehaviour
 {
-    [SerializeField] private UIDocument _uiDocument;
+    //[SerializeField] private UIDocument _uiDocument;
     [SerializeField] private VisualElement _loadLevelsMenu;
     [SerializeField] private List<Action> _buttons;
 
     void Start()
     {
-        _uiDocument = MainMenu.Instance.GetUIDocument();
-        _loadLevelsMenu = _uiDocument.rootVisualElement.Q<VisualElement>("LevelsMenuUI");
+        _loadLevelsMenu = UIHandler.Instance._uiDocument.rootVisualElement.Q<VisualElement>("LevelsMenuUI");
+       // _loadLevelsMenu.style.display = DisplayStyle.None;
         for (int i = 1; ; i++)
         {
-            if (_uiDocument.rootVisualElement.Q<Button>($"LoadLevelButton{i}") != null)
+            if (UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>($"LoadLevelButton{i}") != null)
             {
-                var button = _uiDocument.rootVisualElement.Q<Button>($"LoadLevelButton{i}").clickable;
+                var button = UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>($"LoadLevelButton{i}").clickable;
                 button.clickedWithEventInfo += LoadLevel;
-                // _uiDocument.rootVisualElement.Q<Button>($"LoadLevelButton{i}").clickable.clicked += () => LoadLevel(i);
             }
             else
             {
                 break;
             }
         }
-
     }
 
     private void LoadLevel(EventBase obj)
@@ -40,6 +38,7 @@ public class LoadLevelsMenu : MonoBehaviour
 
         if (id < SceneManager.sceneCountInBuildSettings)
         {
+            UIHandler.Instance.ChangeGameMode(GameMode.Game);
             SceneManager.LoadScene(id);
         }
         else

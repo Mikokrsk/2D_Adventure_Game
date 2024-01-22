@@ -8,15 +8,16 @@ using UnityEngine.UIElements;
 
 public class GameMenu : MonoBehaviour
 {
-    [SerializeField] private UIDocument _uiDocument;
+    //[SerializeField] private UIDocument _uiDocument;
     [SerializeField] private VisualElement _gameMenu;
     [SerializeField] private InputAction _openGameMenu;
-    // Start is called before the first frame update
-    void Start()
+
+    private void Start()
     {
-        _uiDocument = GetComponent<UIDocument>();
-        _uiDocument.rootVisualElement.Q<Button>("QuitButton").clicked += Quit;
-        _gameMenu = _uiDocument.rootVisualElement.Q<VisualElement>("GameMenuUI");
+        //if(UIHandler.Instance._uiDocument == null)
+        //_uiDocument = UIHandler.Instance._uiDocument;
+        UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>("QuitButton").clicked += Quit;
+        _gameMenu = UIHandler.Instance._uiDocument.rootVisualElement.Q<VisualElement>("GameMenuUI");
         _openGameMenu.Enable();
         _openGameMenu.performed += OpenMenu;
         _gameMenu.style.display = DisplayStyle.None;
@@ -24,6 +25,7 @@ public class GameMenu : MonoBehaviour
 
     private void Quit()
     {
+        UIHandler.Instance.ChangeGameMode(GameMode.MainMenu);
         SceneManager.LoadScene(0);
     }
 
@@ -32,13 +34,10 @@ public class GameMenu : MonoBehaviour
         if (_gameMenu.style.display == DisplayStyle.None)
         {
             _gameMenu.style.display = DisplayStyle.Flex;
-            Debug.Log("1");
         }
         else
         {
             _gameMenu.style.display = DisplayStyle.None;
-            Debug.Log("2");
         }
-
     }
 }
