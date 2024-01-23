@@ -5,23 +5,22 @@ using UnityEngine.UIElements;
 
 public class SettingsMenu : MonoBehaviour
 {
-    //[SerializeField] private static UIDocument _uiDocument;
-    [SerializeField] private VisualElement _settingsMenu;
+    [SerializeField] private VisualElement _settingsMenuUI;
 
     void Start()
     {
-        _settingsMenu = UIHandler.Instance._uiDocument.rootVisualElement.Q<VisualElement>("SettingsMenuUI");
-        _settingsMenu.style.display = DisplayStyle.None;
-        UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>("CloseSettingsMenuButton").clicked += CloseMenu;
+        _settingsMenuUI = UIHandler.Instance._uiDocument.rootVisualElement.Q<VisualElement>("SettingsMenuUI");
+        _settingsMenuUI.style.display = DisplayStyle.None;
+        UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>("CloseSettingsMenuButton").clicked += CloseSettingsMenuUI;
     }
 
-    public void OpenMenu()
+    public void OpenSettingsMenuUI()
     {
-        _settingsMenu.style.display = DisplayStyle.Flex;
+        _settingsMenuUI.style.display = DisplayStyle.Flex;
     }
 
-    public void CloseMenu()
+    public void CloseSettingsMenuUI()
     {
-        _settingsMenu.style.display = DisplayStyle.None;
+        _settingsMenuUI.style.display = DisplayStyle.None;
     }
 }

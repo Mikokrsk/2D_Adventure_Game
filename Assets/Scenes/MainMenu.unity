@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayTime: 4
-  m_TimerDisplay: 0
+  _TimerDisplay: 0
   _uiDocument: {fileID: 169313953}
   _gameMode: 1
   _MainMenu: {fileID: 2092198599}
@@ -2616,7 +2616,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1444736890
 Transform:
   m_ObjectHideFlags: 0
@@ -2644,14 +2644,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86dff9343673f5f4e8e4cab1e4421f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _openGameMenu:
-    m_Name: Open Game Menu
+  _menuToggleAction:
+    m_Name: Menu Toggle
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 2bfdf698-623c-4fef-991f-821248bff2db
+    m_Id: fd513dfa-6df6-4400-880f-dde8b03792f8
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: e042decd-0a14-485b-b89b-44740db6f00c
+      m_Path: <Keyboard>/escape
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Menu Toggle
+      m_Flags: 0
     m_Flags: 0
 --- !u!1 &2092198599
 GameObject:
@@ -2671,7 +2679,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2092198600
 Transform:
   m_ObjectHideFlags: 0
@@ -2694,7 +2702,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2092198599}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e76ebc479b2f5844951671e448f1da1, type: 3}
   m_Name: 

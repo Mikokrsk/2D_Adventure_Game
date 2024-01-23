@@ -7,14 +7,13 @@ using UnityEngine.UIElements;
 
 public class LoadLevelsMenu : MonoBehaviour
 {
-    //[SerializeField] private UIDocument _uiDocument;
-    [SerializeField] private VisualElement _loadLevelsMenu;
-    [SerializeField] private List<Action> _buttons;
+    [SerializeField] private VisualElement _loadLevelsMenuUI;
+    [SerializeField] private List<Action> _loadLevelsButtons;
 
-    void Start()
+    void Awake()
     {
-        _loadLevelsMenu = UIHandler.Instance._uiDocument.rootVisualElement.Q<VisualElement>("LevelsMenuUI");
-       // _loadLevelsMenu.style.display = DisplayStyle.None;
+        _loadLevelsMenuUI = UIHandler.Instance._uiDocument.rootVisualElement.Q<VisualElement>("LevelsMenuUI");
+        UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>($"CloseLevelsMenuButton").clickable.clicked += CloseLoadLevelsMenuUI;
         for (int i = 1; ; i++)
         {
             if (UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>($"LoadLevelButton{i}") != null)
@@ -47,13 +46,14 @@ public class LoadLevelsMenu : MonoBehaviour
         }
     }
 
-    public void OpenMenu()
+    public void OpenLoadLevelsMenuUI()
     {
-        _loadLevelsMenu.style.display = DisplayStyle.Flex;
+        _loadLevelsMenuUI.style.display = DisplayStyle.Flex;
     }
 
-    public void CloseMenu()
+    public void CloseLoadLevelsMenuUI()
     {
-        _loadLevelsMenu.style.display = DisplayStyle.None;
+        _loadLevelsMenuUI.style.display = DisplayStyle.None;
     }
+
 }

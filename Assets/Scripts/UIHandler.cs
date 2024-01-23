@@ -5,15 +5,16 @@ using UnityEngine.UIElements;
 
 public class UIHandler : MonoBehaviour
 {
-    [SerializeField] private VisualElement m_Healthbar;
-    public float displayTime = 4.0f;
-    [SerializeField] private VisualElement m_NonPlayerDialogue;
-    [SerializeField] private float m_TimerDisplay;
+    //(TODO):Dialog script
+    [SerializeField] private VisualElement _HealthbarUI;
+    [SerializeField] private float displayTime = 4.0f;
+    [SerializeField] private VisualElement _NonPlayerDialogueUI;
+    [SerializeField] private float _TimerDisplay;
 
-    [SerializeField] public  UIDocument _uiDocument;
+    [SerializeField] public UIDocument _uiDocument;
     [SerializeField] public GameMode _gameMode = GameMode.MainMenu;
-    [SerializeField] private  GameObject _MainMenu;
-    [SerializeField] private  GameObject _GameMenu;
+    [SerializeField] private GameObject _MainMenu;
+    [SerializeField] private GameObject _GameMenu;
     public static UIHandler Instance { get; private set; }
 
     private void Awake()
@@ -27,45 +28,44 @@ public class UIHandler : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        //_uiDocument = GetComponent<UIDocument>();
-       // ChangeGameMode(GameMode.MainMenu);
     }
 
     private void Start()
     {
         if (_gameMode == GameMode.Game)
         {
-            m_Healthbar = _uiDocument.rootVisualElement.Q<VisualElement>("HealthBar");
+            _HealthbarUI = _uiDocument.rootVisualElement.Q<VisualElement>("HealthBar");
             SetHealthValue(1.0f);
-            m_NonPlayerDialogue = _uiDocument.rootVisualElement.Q<VisualElement>("NPCDialogue");
-            m_NonPlayerDialogue.style.display = DisplayStyle.None;
+            _NonPlayerDialogueUI = _uiDocument.rootVisualElement.Q<VisualElement>("NPCDialogue");
+            _NonPlayerDialogueUI.style.display = DisplayStyle.None;
 
-            m_TimerDisplay = -1.0f;
+            _TimerDisplay = -1.0f;
         }
+        ChangeGameMode(GameMode.MainMenu);
     }
 
     private void Update()
     {
-        if (m_TimerDisplay > 0)
+        if (_TimerDisplay > 0)
         {
-            m_TimerDisplay -= Time.deltaTime;
-            if (m_TimerDisplay < 0)
+            _TimerDisplay -= Time.deltaTime;
+            if (_TimerDisplay < 0)
             {
-                m_NonPlayerDialogue.style.display = DisplayStyle.None;
+                _NonPlayerDialogueUI.style.display = DisplayStyle.None;
             }
         }
     }
 
     public void SetHealthValue(float percentage)
     {
-        m_Healthbar.style.width = Length.Percent(100 * percentage);
+        _HealthbarUI.style.width = Length.Percent(100 * percentage);
     }
 
     public void DisplayDialogue(string dialogText)
     {
-        m_NonPlayerDialogue.Q<Label>("DialogText").text = dialogText;
-        m_NonPlayerDialogue.style.display = DisplayStyle.Flex;
-        m_TimerDisplay = displayTime;
+        _NonPlayerDialogueUI.Q<Label>("DialogText").text = dialogText;
+        _NonPlayerDialogueUI.style.display = DisplayStyle.Flex;
+        _TimerDisplay = displayTime;
     }
 
     public void ChangeGameMode(GameMode gameMode)
@@ -73,15 +73,25 @@ public class UIHandler : MonoBehaviour
         _gameMode = gameMode;
 
         if (_gameMode == GameMode.MainMenu)
-        {            
-            _MainMenu.active = true;
-            _GameMenu.active = false;
+        {
+            SetMainMenuActive(true);
+            SetGameMenuActive(false);
         }
         else
         {
-            _MainMenu.active = false;
-            _GameMenu.active = true;
+            SetMainMenuActive(false);
+            SetGameMenuActive(true);
         }
+    }
+
+    public void SetMainMenuActive(bool active)
+    {
+        _MainMenu.SetActive(active);
+    }
+
+    public void SetGameMenuActive(bool active)
+    {
+        _GameMenu.SetActive(active);
     }
 }
 

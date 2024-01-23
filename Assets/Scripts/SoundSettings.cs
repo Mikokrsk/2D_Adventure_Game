@@ -7,7 +7,6 @@ public class SoundSettings : MonoBehaviour
 {
     [SerializeField] private Slider _backgroundMusicVolumeSlider;
     [SerializeField] private AudioSource _backgroundMusicSource;
-    //[SerializeField] private UIDocument _uiDocument;
     [SerializeField] private static SoundSettings Instance;
 
     private void Awake()
