@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("Hit");
         }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        UIHandler.Instance.SetHealthValue(currentHealth / (float)maxHealth);
+        GameUI.Instance.SetHealthValue(currentHealth / (float)maxHealth);
     }
 
     void Launch(InputAction.CallbackContext context)
@@ -102,10 +102,7 @@ public class PlayerController : MonoBehaviour
             if (character != null)
             {
                 character.DisplayDialogue();
-                // UIHandler.instance.DisplayDialogue();
             }
-
-
         }
     }
 

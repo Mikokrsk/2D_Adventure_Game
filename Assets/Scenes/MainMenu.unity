@@ -186,12 +186,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 435467dcaa7e6ac44aaf0ce51717f214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayTime: 4
-  _TimerDisplay: 0
   _uiDocument: {fileID: 169313953}
   _gameMode: 1
-  _MainMenu: {fileID: 2092198599}
-  _GameMenu: {fileID: 1444736889}
+  _MainMenuUIObject: {fileID: 2092198599}
+  _GameUIObject: {fileID: 1444736889}
 --- !u!1 &472317405
 GameObject:
   m_ObjectHideFlags: 0
@@ -2610,8 +2608,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1444736890}
   - component: {fileID: 1444736891}
+  - component: {fileID: 1444736892}
   m_Layer: 5
-  m_Name: GameMenuUI
+  m_Name: GameUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2661,6 +2660,20 @@ MonoBehaviour:
       m_Action: Menu Toggle
       m_Flags: 0
     m_Flags: 0
+--- !u!114 &1444736892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444736889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8f45f5855b858749ade8d85962197c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayTime: 4
+  _TimerDisplay: 0
 --- !u!1 &2092198599
 GameObject:
   m_ObjectHideFlags: 0

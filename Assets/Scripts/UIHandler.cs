@@ -5,16 +5,10 @@ using UnityEngine.UIElements;
 
 public class UIHandler : MonoBehaviour
 {
-    //(TODO):Dialog script
-    [SerializeField] private VisualElement _HealthbarUI;
-    [SerializeField] private float displayTime = 4.0f;
-    [SerializeField] private VisualElement _NonPlayerDialogueUI;
-    [SerializeField] private float _TimerDisplay;
-
     [SerializeField] public UIDocument _uiDocument;
     [SerializeField] public GameMode _gameMode = GameMode.MainMenu;
-    [SerializeField] private GameObject _MainMenu;
-    [SerializeField] private GameObject _GameMenu;
+    [SerializeField] private GameObject _MainMenuUIObject;
+    [SerializeField] private GameObject _GameUIObject;
     public static UIHandler Instance { get; private set; }
 
     private void Awake()
@@ -32,40 +26,7 @@ public class UIHandler : MonoBehaviour
 
     private void Start()
     {
-        if (_gameMode == GameMode.Game)
-        {
-            _HealthbarUI = _uiDocument.rootVisualElement.Q<VisualElement>("HealthBar");
-            SetHealthValue(1.0f);
-            _NonPlayerDialogueUI = _uiDocument.rootVisualElement.Q<VisualElement>("NPCDialogue");
-            _NonPlayerDialogueUI.style.display = DisplayStyle.None;
-
-            _TimerDisplay = -1.0f;
-        }
         ChangeGameMode(GameMode.MainMenu);
-    }
-
-    private void Update()
-    {
-        if (_TimerDisplay > 0)
-        {
-            _TimerDisplay -= Time.deltaTime;
-            if (_TimerDisplay < 0)
-            {
-                _NonPlayerDialogueUI.style.display = DisplayStyle.None;
-            }
-        }
-    }
-
-    public void SetHealthValue(float percentage)
-    {
-        _HealthbarUI.style.width = Length.Percent(100 * percentage);
-    }
-
-    public void DisplayDialogue(string dialogText)
-    {
-        _NonPlayerDialogueUI.Q<Label>("DialogText").text = dialogText;
-        _NonPlayerDialogueUI.style.display = DisplayStyle.Flex;
-        _TimerDisplay = displayTime;
     }
 
     public void ChangeGameMode(GameMode gameMode)
@@ -86,12 +47,12 @@ public class UIHandler : MonoBehaviour
 
     public void SetMainMenuActive(bool active)
     {
-        _MainMenu.SetActive(active);
+        _MainMenuUIObject.SetActive(active);
     }
 
     public void SetGameMenuActive(bool active)
     {
-        _GameMenu.SetActive(active);
+        _GameUIObject.SetActive(active);
     }
 }
 

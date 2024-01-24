@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class NonPlayerCharacter : MonoBehaviour
 {
-    [SerializeField] private string m_DialogText = "...";
-    
+    [SerializeField] private string _DialogText = "...";
+
     public void DisplayDialogue()
     {
-        UIHandler.Instance.DisplayDialogue(m_DialogText);
+        GameUI.Instance.DisplayDialogue(_DialogText);
     }
 }
