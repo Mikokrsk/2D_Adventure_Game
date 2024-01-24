@@ -5,6 +5,7 @@
     <ui:VisualElement class="menu-window-style">
         <ui:Button text="Start" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StartButton" class="menu-button-style" />
         <ui:Button text="OpenSettingsMenu" parse-escape-sequences="true" display-tooltip-when-elided="true" name="OpenSettingsMenuButton" class="menu-button-style" style="margin-top: 40px;" />
+        <ui:Button text="Exit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ExitTheGameButton" class="menu-button-style" style="margin-top: 40px;" />
     </ui:VisualElement>
     <ui:Instance template="SettingsMenuUI" name="SettingsMenuUI" style="align-items: center; display: none; position: absolute; justify-content: space-around; align-self: center; top: 10%; width: 55%; height: 75%; background-image: none;" />
     <ui:Instance template="LevelsMenuUI" name="LevelsMenuUI" style="position: relative; align-items: center; justify-content: flex-start; align-self: center; width: 80%; height: 90%; top: 5%; display: none;" />

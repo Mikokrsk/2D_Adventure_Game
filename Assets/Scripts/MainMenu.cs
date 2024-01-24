@@ -6,7 +6,6 @@ using UnityEngine.UIElements;
 
 public class MainMenu : MonoBehaviour
 {
-    // [SerializeField] private UIDocument _uiDocument;
     [SerializeField] private VisualElement _mainMenuUI;
     [SerializeField] private SettingsMenu _settingsMenu;
     [SerializeField] private LoadLevelsMenu _loadLevelsMenu;
@@ -16,6 +15,14 @@ public class MainMenu : MonoBehaviour
     {
         UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>("OpenSettingsMenuButton").clicked += OpenSettingsMenu;
         UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>("StartButton").clicked += OpenLoadLevelsMenu;
+        if (Application.platform != RuntimePlatform.WebGLPlayer)
+        {
+            UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>("ExitTheGameButton").clicked += ExitTheGame;
+        }
+        else
+        {
+            UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>("ExitTheGameButton").style.display = DisplayStyle.None;
+        }
         _mainMenuUI = UIHandler.Instance._uiDocument.rootVisualElement.Q<VisualElement>("MainMenuUI");
         _mainMenuUI.style.display = DisplayStyle.None;
         OpenMainMenu();
@@ -51,5 +58,14 @@ public class MainMenu : MonoBehaviour
         _settingsMenu.CloseSettingsMenuUI();
         _loadLevelsMenu.CloseLoadLevelsMenuUI();
         _mainMenuUI.style.display = DisplayStyle.None;
+    }
+
+    private void ExitTheGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }
