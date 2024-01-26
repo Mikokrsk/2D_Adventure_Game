@@ -2,6 +2,8 @@
     <ui:Template name="NPCDialogue" src="project://database/Assets/UI/NPCDialogue.uxml?fileID=9197481963319205126&amp;guid=aa8a181d3386ae547a5c7bece7e58db6&amp;type=3#NPCDialogue" />
     <ui:Template name="MainMenuUI" src="project://database/Assets/UI/MainMenuUI.uxml?fileID=9197481963319205126&amp;guid=fb176ecf596e77d4d9692b7fa663c118&amp;type=3#MainMenuUI" />
     <ui:Template name="GameMenuUI" src="project://database/Assets/UI/GameMenuUI.uxml?fileID=9197481963319205126&amp;guid=7cd0df70b26bf5044b4ef3f5eb32cc4a&amp;type=3#GameMenuUI" />
+    <ui:Template name="SettingsMenuUI" src="project://database/Assets/UI/SettingsMenuUI.uxml?fileID=9197481963319205126&amp;guid=556c9dbfd8315074aa0a983cc194c611&amp;type=3#SettingsMenuUI" />
+    <ui:Template name="LevelsMenuUI" src="project://database/Assets/UI/LevelsMenuUI.uxml?fileID=9197481963319205126&amp;guid=43981baf685c6b144baf4acac0aaa5b5&amp;type=3#LevelsMenuUI" />
     <ui:VisualElement name="GameUI" style="flex-grow: 1; display: none;">
         <ui:VisualElement name="HealthBarBackground" style="flex-grow: 1; background-image: url(&apos;project://database/Assets/Art/Ruby/UI/UIHealthFrame.png?fileID=21300000&amp;guid=e04807cd45105ec409b00463fe6ab7b1&amp;type=3#UIHealthFrame&apos;); width: 428px; height: 287px; -unity-background-scale-mode: scale-to-fit; position: absolute; display: flex;">
             <ui:VisualElement name="HealthBarContainer" style="flex-grow: 1; width: 235px; height: 66px; -unity-background-scale-mode: scale-to-fit; position: absolute; top: 104px; left: 179px;">
@@ -11,6 +13,10 @@
         <ui:VisualElement name="CharacterPortrait" style="flex-grow: 1; background-image: url(&apos;project://database/Assets/Art/Ducko/UI/CharacterPortrait.png?fileID=21300000&amp;guid=0332b35b8fe3cf8458eb0558889493d1&amp;type=3#CharacterPortrait&apos;); width: 171px; height: 154px; transform-origin: center; position: absolute; -unity-background-scale-mode: scale-to-fit; top: 62px; left: 0; display: flex;" />
     </ui:VisualElement>
     <ui:Instance template="NPCDialogue" name="NPCDialogue" style="position: absolute; left: 10%; top: 70%; right: 10%; bottom: 0; display: none;" />
-    <ui:Instance template="MainMenuUI" name="MainMenuUI" style="position: absolute; width: 100%; height: 100%; display: flex;" />
-    <ui:Instance template="GameMenuUI" name="GameMenuUI" style="position: absolute; align-items: center; justify-content: center; align-self: center; width: 100%; height: 100%; display: none;" />
+    <ui:VisualElement name="MenuWindows" style="flex-grow: 1; align-items: center; justify-content: center; align-self: center; width: 100%; height: 100%;">
+        <ui:Instance template="MainMenuUI" name="MainMenuUI" style="position: absolute; width: 100%; height: 100%; display: none;" />
+        <ui:Instance template="GameMenuUI" name="GameMenuUI" style="position: absolute; align-items: center; justify-content: center; align-self: center; width: 100%; height: 100%; display: none;" />
+        <ui:Instance template="SettingsMenuUI" name="SettingsMenuUI" style="position: absolute; width: 55%; height: 75%; top: auto; right: auto; left: auto; align-self: center; align-items: auto; justify-content: flex-start; min-width: auto; min-height: auto; display: none;" />
+        <ui:Instance template="LevelsMenuUI" name="LevelsMenuUI" style="position: absolute; width: 75%; height: 85%; align-self: center; align-items: stretch; justify-content: flex-start; display: none;" />
+    </ui:VisualElement>
 </ui:UXML>

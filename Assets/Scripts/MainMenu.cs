@@ -13,7 +13,6 @@ public class MainMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>("OpenSettingsMenuButton").clicked += OpenSettingsMenu;
         UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>("StartButton").clicked += OpenLoadLevelsMenu;
         if (Application.platform != RuntimePlatform.WebGLPlayer)
         {
@@ -41,11 +40,6 @@ public class MainMenu : MonoBehaviour
     public void OpenMainMenu()
     {
         _mainMenuUI.style.display = DisplayStyle.Flex;
-    }
-
-    private void OpenSettingsMenu()
-    {
-        _settingsMenu.OpenSettingsMenuUI();
     }
 
     private void OpenLoadLevelsMenu()

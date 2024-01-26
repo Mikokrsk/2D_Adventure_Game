@@ -1,7 +1,8 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Styles/SettingMenuStyle.uss?fileID=7433441132597879392&amp;guid=1f2ba6966c5798442a38c7e38bb0313f&amp;type=3#SettingMenuStyle" />
     <Style src="project://database/Assets/Styles/MainMenuUIStyle.uss?fileID=7433441132597879392&amp;guid=97baacce252f34a40b549066df580669&amp;type=3#MainMenuUIStyle" />
-    <ui:VisualElement class="menu-window-style" style="flex-grow: 1;">
-        <ui:Button text="Quit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="QuitButton" class="menu-button-style" />
+    <ui:VisualElement name="Background" class="menu-window-style" style="flex-grow: 1; justify-content: center;">
+        <ui:Button text="OpenSettingsMenu" parse-escape-sequences="true" display-tooltip-when-elided="true" name="OpenSettingsMenuButton" class="menu-button-style" />
+        <ui:Button text="Quit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="QuitButton" class="menu-button-style" style="margin-top: 40px;" />
     </ui:VisualElement>
 </ui:UXML>

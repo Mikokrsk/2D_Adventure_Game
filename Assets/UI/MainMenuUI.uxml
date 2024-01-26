@@ -1,12 +1,8 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="SettingsMenuUI" src="project://database/Assets/UI/SettingsMenuUI.uxml?fileID=9197481963319205126&amp;guid=556c9dbfd8315074aa0a983cc194c611&amp;type=3#SettingsMenuUI" />
-    <ui:Template name="LevelsMenuUI" src="project://database/Assets/UI/LevelsMenuUI.uxml?fileID=9197481963319205126&amp;guid=43981baf685c6b144baf4acac0aaa5b5&amp;type=3#LevelsMenuUI" />
     <Style src="project://database/Assets/Styles/MainMenuUIStyle.uss?fileID=7433441132597879392&amp;guid=97baacce252f34a40b549066df580669&amp;type=3#MainMenuUIStyle" />
-    <ui:VisualElement class="menu-window-style">
+    <ui:VisualElement name="Background" class="menu-window-style">
         <ui:Button text="Start" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StartButton" class="menu-button-style" />
         <ui:Button text="OpenSettingsMenu" parse-escape-sequences="true" display-tooltip-when-elided="true" name="OpenSettingsMenuButton" class="menu-button-style" style="margin-top: 40px;" />
         <ui:Button text="Exit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ExitTheGameButton" class="menu-button-style" style="margin-top: 40px;" />
     </ui:VisualElement>
-    <ui:Instance template="SettingsMenuUI" name="SettingsMenuUI" style="align-items: center; display: none; position: absolute; justify-content: space-around; align-self: center; top: 10%; width: 55%; height: 75%; background-image: none;" />
-    <ui:Instance template="LevelsMenuUI" name="LevelsMenuUI" style="position: relative; align-items: center; justify-content: flex-start; align-self: center; width: 80%; height: 90%; top: 5%; display: none;" />
 </ui:UXML>
