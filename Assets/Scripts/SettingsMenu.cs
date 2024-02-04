@@ -11,6 +11,7 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] private Toggle _fullScreenToggle;
     [SerializeField] private Button _applyButton;
     [SerializeField] private DropdownField _resolutionDropdownField;
+    [SerializeField] private DropdownField _qualityDropdownField;
     [SerializeField] private List<Button> _settingsMenuButtons;
     void Start()
     {
@@ -32,6 +33,18 @@ public class SettingsMenu : MonoBehaviour
             _resolutionDropdownField.choices.Add($"{res.width}x{res.height}:{res.refreshRateRatio}");
         }
         _resolutionDropdownField.value = _resolutionDropdownField.choices.First();
+
+        _qualityDropdownField = UIHandler.Instance._uiDocument.rootVisualElement.Q<DropdownField>("QualityDropdownField");
+        _qualityDropdownField.choices.Clear();
+
+        List<string> qualityList = new List<string>();
+        qualityList.AddRange(QualitySettings.names);
+        foreach (var quality in qualityList)
+        {
+            _qualityDropdownField.choices.Add($"{quality}");
+        }
+        _qualityDropdownField.value = _qualityDropdownField.choices.First();
+
         _settingsMenuButtons = UIHandler.Instance._uiDocument.rootVisualElement.Query<Button>("OpenSettingsMenuButton").ToList();
         foreach (var button in _settingsMenuButtons)
         {
@@ -66,7 +79,14 @@ public class SettingsMenu : MonoBehaviour
     public void ApplySettings()
     {
         var res = _resolutionDropdownField.value.Split('x', ':');
-        Screen.SetResolution(Int32.Parse(res[0]), Int32.Parse(res[1]),_fullScreenToggle.value);
-        Debug.Log("Resolution set");
+        Screen.SetResolution(Int32.Parse(res[0]), Int32.Parse(res[1]), _fullScreenToggle.value);
+        for (int i = 0; i < _qualityDropdownField.choices.Count; i++)
+        {
+            if (_qualityDropdownField.value == _qualityDropdownField.choices[i])
+            {
+                QualitySettings.SetQualityLevel(i);
+                break;
+            }
+        }
     }
 }
