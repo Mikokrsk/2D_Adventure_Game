@@ -24,3 +24,61 @@
     -unity-slice-scale: 1.8px;
     -unity-background-scale-mode: stretch-to-fill;
 }
+
+#BackgroundMusicVolumeSlider #unity-tracker {
+    height: 100%;
+    width: 100%;
+    top: auto;
+    align-self: center;
+    flex-direction: column;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+#BackgroundMusicVolumeSlider #unity-drag-container {
+    height: 60%;
+    align-self: center;
+}
+
+#BackgroundMusicVolumeSlider #unity-dragger-border {
+}
+
+#BackgroundMusicVolumeSlider #unity-dragger {
+    width: 60px;
+    height: 60px;
+    align-self: auto;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    top: -12px;
+    background-image: url('project://database/Assets/Assets/2D%20Casual%20UI/Sprite/GUI.png?fileID=21300014&guid=1eaee135ce037439d925cee5e41ce026&type=3#GUI_7');
+    border-top-left-radius: 100%;
+    border-top-right-radius: 100%;
+    border-bottom-right-radius: 100%;
+    border-bottom-left-radius: 100%;
+    justify-content: flex-start;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    -unity-background-scale-mode: stretch-to-fill;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0);
+}
+
+#FullScreenToggle #unity-checkmark {
+    width: 50px;
+    height: 50px;
+    left: 30px;
+}

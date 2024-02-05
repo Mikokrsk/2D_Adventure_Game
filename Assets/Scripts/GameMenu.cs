@@ -8,37 +8,62 @@ using UnityEngine.UIElements;
 
 public class GameMenu : MonoBehaviour
 {
-    [SerializeField] private UIDocument _uiDocument;
-    [SerializeField] private VisualElement _gameMenu;
-    [SerializeField] private InputAction _openGameMenu;
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private VisualElement _gameMenuUI;
+    [SerializeField] private InputAction _menuToggleAction;
+    [SerializeField] public static GameMenu Instance;
+
+    private void Awake()
     {
-        _uiDocument = GetComponent<UIDocument>();
-        _uiDocument.rootVisualElement.Q<Button>("QuitButton").clicked += Quit;
-        _gameMenu = _uiDocument.rootVisualElement.Q<VisualElement>("GameMenuUI");
-        _openGameMenu.Enable();
-        _openGameMenu.performed += OpenMenu;
-        _gameMenu.style.display = DisplayStyle.None;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnEnable()
+    {
+        UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>("QuitButton").clicked += Quit;
+        _gameMenuUI = UIHandler.Instance._uiDocument.rootVisualElement.Q<VisualElement>("GameMenuUI");
+        _menuToggleAction.Enable();
+        _menuToggleAction.performed += ToggleGameMenu;
+        _gameMenuUI.style.display = DisplayStyle.None;
+    }
+
+    private void OnDisable()
+    {
+        CloseGameMenuUI();
     }
 
     private void Quit()
     {
+        UIHandler.Instance.ChangeGameMode(GameMode.MainMenu);
         SceneManager.LoadScene(0);
     }
 
-    public void OpenMenu(InputAction.CallbackContext context)
+    public void ToggleGameMenu(InputAction.CallbackContext context)
     {
-        if (_gameMenu.style.display == DisplayStyle.None)
+        if (_gameMenuUI.style.display == DisplayStyle.None)
         {
-            _gameMenu.style.display = DisplayStyle.Flex;
-            Debug.Log("1");
+            OpenMenuGameMenuUI();
         }
         else
         {
-            _gameMenu.style.display = DisplayStyle.None;
-            Debug.Log("2");
+            CloseGameMenuUI();
         }
+    }
 
+    public void OpenMenuGameMenuUI()
+    {
+        _gameMenuUI.style.display = DisplayStyle.Flex;
+    }
+
+    public void CloseGameMenuUI()
+    {
+        _gameMenuUI.style.display = DisplayStyle.None;
     }
 }

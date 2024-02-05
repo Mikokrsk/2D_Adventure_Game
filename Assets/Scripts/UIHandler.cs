@@ -5,48 +5,59 @@ using UnityEngine.UIElements;
 
 public class UIHandler : MonoBehaviour
 {
-    [SerializeField] private VisualElement m_Healthbar;
-    public float displayTime = 4.0f;
-    [SerializeField] private VisualElement m_NonPlayerDialogue;
-    [SerializeField] private float m_TimerDisplay;
-    public static UIHandler instance { get; private set; }
+    [SerializeField] public UIDocument _uiDocument;
+    [SerializeField] public GameMode _gameMode = GameMode.MainMenu;
+    [SerializeField] private GameObject _MainMenuUIObject;
+    [SerializeField] private GameObject _GameUIObject;
+    public static UIHandler Instance { get; private set; }
 
     private void Awake()
     {
-        instance = this;
-    }
-    void Start()
-    {
-        UIDocument uiDocument = GetComponent<UIDocument>();
-        m_Healthbar = uiDocument.rootVisualElement.Q<VisualElement>("HealthBar");
-        SetHealthValue(1.0f);
-        m_NonPlayerDialogue = uiDocument.rootVisualElement.Q<VisualElement>("NPCDialogue");
-        m_NonPlayerDialogue.style.display = DisplayStyle.None;
-        
-        m_TimerDisplay = -1.0f;
-    }
-
-    private void Update()
-    {
-        if (m_TimerDisplay > 0)
+        if (Instance == null)
         {
-            m_TimerDisplay -= Time.deltaTime;
-            if (m_TimerDisplay < 0)
-            {
-                m_NonPlayerDialogue.style.display = DisplayStyle.None;
-            }
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
-    public void SetHealthValue(float percentage)
+    private void Start()
     {
-        m_Healthbar.style.width = Length.Percent(100 * percentage);
+        ChangeGameMode(GameMode.MainMenu);
     }
 
-    public void DisplayDialogue(string dialogText)
+    public void ChangeGameMode(GameMode gameMode)
     {
-        m_NonPlayerDialogue.Q<Label>("DialogText").text = dialogText;
-        m_NonPlayerDialogue.style.display = DisplayStyle.Flex;
-        m_TimerDisplay = displayTime;
+        _gameMode = gameMode;
+
+        if (_gameMode == GameMode.MainMenu)
+        {
+            SetMainMenuActive(true);
+            SetGameMenuActive(false);
+        }
+        else
+        {
+            SetMainMenuActive(false);
+            SetGameMenuActive(true);
+        }
     }
+
+    public void SetMainMenuActive(bool active)
+    {
+        _MainMenuUIObject.SetActive(active);
+    }
+
+    public void SetGameMenuActive(bool active)
+    {
+        _GameUIObject.SetActive(active);
+    }
+}
+
+public enum GameMode
+{
+    Game,
+    MainMenu
 }

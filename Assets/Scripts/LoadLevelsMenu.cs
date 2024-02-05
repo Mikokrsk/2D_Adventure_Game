@@ -7,28 +7,25 @@ using UnityEngine.UIElements;
 
 public class LoadLevelsMenu : MonoBehaviour
 {
-    [SerializeField] private UIDocument _uiDocument;
-    [SerializeField] private VisualElement _loadLevelsMenu;
-    [SerializeField] private List<Action> _buttons;
+    [SerializeField] private VisualElement _loadLevelsMenuUI;
+    [SerializeField] private List<Action> _loadLevelsButtons;
 
-    void Start()
+    void Awake()
     {
-        _uiDocument = MainMenu.Instance.GetUIDocument();
-        _loadLevelsMenu = _uiDocument.rootVisualElement.Q<VisualElement>("LevelsMenuUI");
+        _loadLevelsMenuUI = UIHandler.Instance._uiDocument.rootVisualElement.Q<VisualElement>("LevelsMenuUI");
+        UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>($"CloseLevelsMenuButton").clickable.clicked += CloseLoadLevelsMenuUI;
         for (int i = 1; ; i++)
         {
-            if (_uiDocument.rootVisualElement.Q<Button>($"LoadLevelButton{i}") != null)
+            if (UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>($"LoadLevelButton{i}") != null)
             {
-                var button = _uiDocument.rootVisualElement.Q<Button>($"LoadLevelButton{i}").clickable;
+                var button = UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>($"LoadLevelButton{i}").clickable;
                 button.clickedWithEventInfo += LoadLevel;
-                // _uiDocument.rootVisualElement.Q<Button>($"LoadLevelButton{i}").clickable.clicked += () => LoadLevel(i);
             }
             else
             {
                 break;
             }
         }
-
     }
 
     private void LoadLevel(EventBase obj)
@@ -40,6 +37,7 @@ public class LoadLevelsMenu : MonoBehaviour
 
         if (id < SceneManager.sceneCountInBuildSettings)
         {
+            UIHandler.Instance.ChangeGameMode(GameMode.Game);
             SceneManager.LoadScene(id);
         }
         else
@@ -48,13 +46,14 @@ public class LoadLevelsMenu : MonoBehaviour
         }
     }
 
-    public void OpenMenu()
+    public void OpenLoadLevelsMenuUI()
     {
-        _loadLevelsMenu.style.display = DisplayStyle.Flex;
+        _loadLevelsMenuUI.style.display = DisplayStyle.Flex;
     }
 
-    public void CloseMenu()
+    public void CloseLoadLevelsMenuUI()
     {
-        _loadLevelsMenu.style.display = DisplayStyle.None;
+        _loadLevelsMenuUI.style.display = DisplayStyle.None;
     }
+
 }
