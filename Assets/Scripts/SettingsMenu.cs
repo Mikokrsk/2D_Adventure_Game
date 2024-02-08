@@ -59,7 +59,8 @@ public class SettingsMenu : MonoBehaviour
 
     public void CloseSettingsMenuUI()
     {
-        _settingsMenuUI.style.display = DisplayStyle.None;
+        // _settingsMenuUI.style.display = DisplayStyle.None;
+        Save.SaveSystem.Instance.LoadGame();
     }
 
     public void ChangeScreenMode(ClickEvent evt)
@@ -88,5 +89,7 @@ public class SettingsMenu : MonoBehaviour
                 break;
             }
         }
+
+        Save.SaveSystem.Instance.SaveGame();
     }
 }

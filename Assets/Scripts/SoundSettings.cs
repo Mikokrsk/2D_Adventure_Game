@@ -7,8 +7,18 @@ public class SoundSettings : MonoBehaviour
 {
     [SerializeField] private Slider _backgroundMusicVolumeSlider;
     [SerializeField] private AudioSource _backgroundMusicSource;
-    [SerializeField] private static SoundSettings Instance;
-
+    [SerializeField] public static SoundSettings Instance;
+    public float volumeValue
+    {
+        get
+        {
+            return Instance._backgroundMusicVolumeSlider.value; 
+        }
+        set
+        {
+            _backgroundMusicVolumeSlider.value = value;
+        }
+    }
     private void Awake()
     {
         if (Instance == null)
