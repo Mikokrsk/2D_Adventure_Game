@@ -26,6 +26,28 @@ public class SettingsMenu : MonoBehaviour
             ChangeScreenMode(value);
         }
     }
+    public int ResolutionIndex
+    {
+        get
+        {
+            return _resolutionDropdownField.index;
+        }
+        set
+        {
+            _resolutionDropdownField.index = value;
+        }
+    }
+    public int QualityIndex
+    {
+        get
+        {
+            return _qualityDropdownField.index;
+        }
+        set
+        {
+            _qualityDropdownField.index = value;
+        }
+    }
     private void Awake()
     {
         if (Instance == null)

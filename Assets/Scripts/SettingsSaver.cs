@@ -10,6 +10,8 @@ namespace Save
         [SerializeField] private int _executionOrder;
         [SerializeField] private readonly string _volumValueUniqueName = "volumValue";
         [SerializeField] private readonly string _isFullscreenUniqueName = "isFullscreenValue";
+        [SerializeField] private readonly string _resolutinValueName = "resolution";
+        [SerializeField] private readonly string _qualityValueName = "quality";
         public int uniqueID
         {
             get
@@ -29,7 +31,9 @@ namespace Save
         {
             ExtendedComponentData data = new ExtendedComponentData();
             data.SetFloat(_volumValueUniqueName, SoundSettings.Instance.volumeValue);
-            data.SetBool(_isFullscreenUniqueName,SettingsMenu.Instance.IsFullsreenMode);
+            data.SetBool(_isFullscreenUniqueName, SettingsMenu.Instance.IsFullsreenMode);
+            data.SetInt(_resolutinValueName, SettingsMenu.Instance.ResolutionIndex);
+            data.SetInt(_qualityValueName, SettingsMenu.Instance.QualityIndex);
             return data;
         }
         public void Deserialize(ComponentData data)
@@ -37,6 +41,8 @@ namespace Save
             ExtendedComponentData unpacked = (ExtendedComponentData)data;
             SoundSettings.Instance.volumeValue = unpacked.GetFloat(_volumValueUniqueName);
             SettingsMenu.Instance.IsFullsreenMode = unpacked.GetBool(_isFullscreenUniqueName);
+            SettingsMenu.Instance.ResolutionIndex = unpacked.GetInt(_resolutinValueName);
+            SettingsMenu.Instance.QualityIndex = unpacked.GetInt(_qualityValueName);
         }
     }
 }
