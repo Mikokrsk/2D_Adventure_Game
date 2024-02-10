@@ -13,6 +13,31 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] private DropdownField _resolutionDropdownField;
     [SerializeField] private DropdownField _qualityDropdownField;
     [SerializeField] private List<Button> _settingsMenuButtons;
+    [SerializeField] public static SettingsMenu Instance;
+
+    public bool IsFullsreenMode
+    {
+        get
+        {
+            return _fullScreenToggle.value;
+        }
+        set
+        {
+            ChangeScreenMode(value);
+        }
+    }
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     void Start()
     {
         _settingsMenuUI = UIHandler.Instance._uiDocument.rootVisualElement.Q<VisualElement>("SettingsMenuUI");
@@ -50,6 +75,8 @@ public class SettingsMenu : MonoBehaviour
         {
             button.clicked += OpenSettingsMenuUI;
         }
+
+        LoadSettings();
     }
 
     public void OpenSettingsMenuUI()
@@ -60,7 +87,7 @@ public class SettingsMenu : MonoBehaviour
     public void CloseSettingsMenuUI()
     {
         // _settingsMenuUI.style.display = DisplayStyle.None;
-        Save.SaveSystem.Instance.LoadGame();
+        LoadSettings();
     }
 
     public void ChangeScreenMode(ClickEvent evt)
@@ -68,12 +95,22 @@ public class SettingsMenu : MonoBehaviour
         if (_fullScreenToggle.value)
         {
             Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
-            Debug.Log("FullScreenWindow");
         }
         else
         {
             Screen.fullScreenMode = FullScreenMode.Windowed;
-            Debug.Log("Windowed");
+        }
+    }
+    public void ChangeScreenMode(bool value)
+    {
+        _fullScreenToggle.value = value;
+        if (value)
+        {
+            Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+        }
+        else
+        {
+            Screen.fullScreenMode = FullScreenMode.Windowed;
         }
     }
 
@@ -90,6 +127,16 @@ public class SettingsMenu : MonoBehaviour
             }
         }
 
-        Save.SaveSystem.Instance.SaveGame();
+        SaveSettings();
+    }
+
+    private void SaveSettings()
+    {
+        Save.SaveSystem.Instance.Save("Assets/Saves/", "settingsSave", ".data");
+    }
+
+    private void LoadSettings()
+    {
+        Save.SaveSystem.Instance.Load("Assets/Saves/", "settingsSave", ".data");
     }
 }

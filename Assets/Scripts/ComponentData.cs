@@ -13,13 +13,13 @@ namespace Save
         protected Dictionary<string, float> _floats = new Dictionary<string, float>();
         protected Dictionary<string, int> _ints = new Dictionary<string, int>();
         protected Dictionary<string, string> _strings = new Dictionary<string, string>();
+        protected Dictionary<string, bool> _bools = new Dictionary<string, bool>();
 
         public void SetFloat(string uniqueName, float value)
         {
             _floats[uniqueName] = value;
-            Debug.Log($"Set {uniqueName} = {value}");
         }
-        public void SetInt(string uniqueName,int value)
+        public void SetInt(string uniqueName, int value)
         {
             _ints[uniqueName] = value;
         }
@@ -27,19 +27,26 @@ namespace Save
         {
             _strings[uniqueName] = value;
         }
+        public void SetBool(string uniqueName, bool value)
+        {
+            _bools[uniqueName] = value;
+        }
 
         public float GetFloat(string uniqueName)
         {
-            Debug.Log($"Get {uniqueName} = {_floats[uniqueName]}");
             return _floats[uniqueName];
         }
         public int GetInt(string uniqueName)
-        { 
+        {
             return _ints[uniqueName];
         }
         public string GetString(string uniqueName)
         {
             return _strings[uniqueName];
+        }
+        public bool GetBool(string uniqueName)
+        {
+            return _bools[uniqueName];
         }
     }
 }

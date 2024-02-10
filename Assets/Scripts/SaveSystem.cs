@@ -80,7 +80,7 @@ namespace Save
                     savableComponent.Deserialize(componentsData[savableComponent.uniqueID]);
         }
 
-        public void SaveGame()
+/*        public void SaveGame()
         {
             // GetComponent<SaveSystem>().
             Save("Assets/Saves/", "save", ".data");
@@ -92,6 +92,6 @@ namespace Save
             //GetComponent<SaveSystem>().
             Load("Assets/Saves/", "save", ".data");
             Debug.Log("Game loaded");
-        }
+        }*/
     }
 }
