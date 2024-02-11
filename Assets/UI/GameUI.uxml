@@ -16,7 +16,7 @@
     <ui:VisualElement name="MenuWindows" style="flex-grow: 1; align-items: center; justify-content: center; align-self: center; width: 100%; height: 100%;">
         <ui:Instance template="MainMenuUI" name="MainMenuUI" style="position: absolute; width: 100%; height: 100%; display: none;" />
         <ui:Instance template="GameMenuUI" name="GameMenuUI" style="position: absolute; align-items: center; justify-content: center; align-self: center; width: 100%; height: 100%; display: none;" />
-        <ui:Instance template="SettingsMenuUI" name="SettingsMenuUI" style="position: absolute; width: 100%; height: 100%; top: auto; right: auto; left: auto; align-self: center; align-items: auto; justify-content: flex-start; min-width: auto; min-height: auto; display: flex;" />
+        <ui:Instance template="SettingsMenuUI" name="SettingsMenuUI" style="position: absolute; width: 100%; height: 100%; top: auto; right: auto; left: auto; align-self: center; align-items: auto; justify-content: flex-start; min-width: auto; min-height: auto; display: none;" />
         <ui:Instance template="LevelsMenuUI" name="LevelsMenuUI" style="position: absolute; width: 75%; height: 85%; align-self: center; align-items: stretch; justify-content: flex-start; display: none;" />
     </ui:VisualElement>
 </ui:UXML>

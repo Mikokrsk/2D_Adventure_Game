@@ -79,19 +79,5 @@ namespace Save
                 if (componentsData.ContainsKey(savableComponent.uniqueID))
                     savableComponent.Deserialize(componentsData[savableComponent.uniqueID]);
         }
-
-/*        public void SaveGame()
-        {
-            // GetComponent<SaveSystem>().
-            Save("Assets/Saves/", "save", ".data");
-            Debug.Log("Game saved");
-        }
-
-        public void LoadGame()
-        {
-            //GetComponent<SaveSystem>().
-            Load("Assets/Saves/", "save", ".data");
-            Debug.Log("Game loaded");
-        }*/
     }
 }

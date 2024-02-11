@@ -3,6 +3,8 @@
     <Style src="project://database/Assets/Styles/MainMenuUIStyle.uss?fileID=7433441132597879392&amp;guid=97baacce252f34a40b549066df580669&amp;type=3#MainMenuUIStyle" />
     <ui:VisualElement name="Background" class="menu-window-style" style="flex-grow: 1; justify-content: center;">
         <ui:Button text="OpenSettingsMenu" parse-escape-sequences="true" display-tooltip-when-elided="true" name="OpenSettingsMenuButton" class="menu-button-style" />
-        <ui:Button text="Quit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="QuitButton" class="menu-button-style" style="margin-top: 40px;" />
+        <ui:Button text="Quit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="QuitButton" class="menu-button-style" />
+        <ui:Button text="SaveGame" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SaveGameButton" class="menu-button-style" />
+        <ui:Button text="LoadGame" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LoadGameButton" class="menu-button-style" />
     </ui:VisualElement>
 </ui:UXML>

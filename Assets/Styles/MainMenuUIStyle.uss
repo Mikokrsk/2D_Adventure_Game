@@ -18,12 +18,19 @@
     left: 35%;
     top: 10%;
     max-height: none;
+    padding-top: 40px;
+    padding-right: 60px;
+    padding-bottom: 60px;
+    padding-left: 60px;
 }
 
 .menu-button-style {
     white-space: nowrap;
-    width: 80%;
-    height: 10%;
+    width: 100%;
+    height: 15%;
     -unity-font-style: bold;
     font-size: 40px;
+    flex-grow: 0;
+    max-height: none;
+    margin-top: 11%;
 }

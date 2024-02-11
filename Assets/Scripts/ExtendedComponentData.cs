@@ -24,8 +24,8 @@ namespace Save
         public void GetTransform(string uniqueName, Transform transform)
         {
             transform.position = GetVector(uniqueName + ".position");
-            transform.position = GetVector(uniqueName + ".rotation");
-            transform.position = GetVector(uniqueName + ".scale");
+            transform.eulerAngles = GetVector(uniqueName + ".rotation");
+            transform.localScale = GetVector(uniqueName + ".scale");
         }
         public Vector3 GetVector(string uniqueName)
         {

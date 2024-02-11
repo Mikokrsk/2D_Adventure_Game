@@ -65,7 +65,9 @@ public class SettingsMenu : MonoBehaviour
         _settingsMenuUI = UIHandler.Instance._uiDocument.rootVisualElement.Q<VisualElement>("SettingsMenuUI");
         _settingsMenuUI.style.display = DisplayStyle.None;
         UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>("CloseSettingsMenuButton").clicked += CloseSettingsMenuUI;
-        UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>("ApplyButton").clicked += ApplySettings;
+        UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>("ApplySettingsMenuButton").clicked += ApplySettings;
+        UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>("SaveSettingsMenuButton").clicked += SaveSettings;
+        UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>("LoadSettingsMenuButton").clicked += LoadSettings;
         _fullScreenToggle = UIHandler.Instance._uiDocument.rootVisualElement.Q<Toggle>("FullScreenToggle");
         _fullScreenToggle.value = true;
         _fullScreenToggle.RegisterCallback<ClickEvent>(ChangeScreenMode);
@@ -108,8 +110,8 @@ public class SettingsMenu : MonoBehaviour
 
     public void CloseSettingsMenuUI()
     {
-        // _settingsMenuUI.style.display = DisplayStyle.None;
-        LoadSettings();
+         _settingsMenuUI.style.display = DisplayStyle.None;
+        //LoadSettings();
     }
 
     public void ChangeScreenMode(ClickEvent evt)
@@ -149,7 +151,7 @@ public class SettingsMenu : MonoBehaviour
             }
         }
 
-        SaveSettings();
+       // SaveSettings();
     }
 
     private void SaveSettings()
