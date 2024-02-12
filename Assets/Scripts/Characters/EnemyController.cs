@@ -66,7 +66,7 @@ public class EnemyController : MonoBehaviour
         PlayerController player = other.gameObject.GetComponent<PlayerController>();
         if (player != null)
         {
-            player.ChangeHealth(-1);
+            player.healthManager.ChangeHealth(-1);
         }
     }
 
