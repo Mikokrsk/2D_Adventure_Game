@@ -8,6 +8,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private Rigidbody2D rigidbody2d;
     [SerializeField] public Vector3 startPosition;
     [SerializeField] public float distance;
+    [SerializeField] public int damage;
     // Start is called before the first frame update
     void Awake()
     {
@@ -28,10 +29,10 @@ public class Projectile : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D other)
     {
-        EnemyController enemy = other.collider.GetComponent<EnemyController>();
+        EnemyHealthManager enemy = other.collider.GetComponent<EnemyHealthManager>();
         if (enemy != null)
         {
-            enemy.Fix();
+            enemy.GetHit(damage);
         }
         Debug.Log("Projectile collision with " + other.gameObject);
         Destroy(gameObject);

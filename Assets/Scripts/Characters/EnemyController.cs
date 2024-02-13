@@ -79,7 +79,7 @@ public class EnemyController : MonoBehaviour
         return randomAxis;
     }
 
-    public void Fix()
+/*    public void Fix()
     {
         if (!aggressive)
         {
@@ -90,5 +90,5 @@ public class EnemyController : MonoBehaviour
         animator.SetTrigger("Fixed");
         audioWalk.mute = true;
         smokeEffect.Stop();
-    }
+    }*/
 }

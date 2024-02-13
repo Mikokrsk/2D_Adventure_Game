@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class UIHandler : MonoBehaviour
@@ -26,7 +28,14 @@ public class UIHandler : MonoBehaviour
 
     private void Start()
     {
-        ChangeGameMode(GameMode.MainMenu);
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            ChangeGameMode(GameMode.MainMenu);
+        }
+        else
+        {
+            ChangeGameMode(GameMode.Game);
+        }
     }
 
     public void ChangeGameMode(GameMode gameMode)

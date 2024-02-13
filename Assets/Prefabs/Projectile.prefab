@@ -174,3 +174,4 @@ MonoBehaviour:
   rigidbody2d: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   distance: 15
+  damage: 1
