@@ -29,7 +29,7 @@ public class HealingZone : MonoBehaviour
         {
             isHealing = true;
             damageCooldown = timeHealing;
-            controller.healthManager.ChangeHealth(healingPower);
+            controller.healthManager.Heal(healingPower);
         }
     }
 }

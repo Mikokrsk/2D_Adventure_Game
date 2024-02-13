@@ -20,7 +20,8 @@ public class PlayerHealthManager : MonoBehaviour, IHealthManager
         }
         set
         {
-            ChangeHealth(value);
+            _currentHealth = value;
+            UpdateHpBar();
         }
     }
 
@@ -29,6 +30,11 @@ public class PlayerHealthManager : MonoBehaviour, IHealthManager
         get
         {
             return _maxHealth;
+        }
+        set
+        {
+            _maxHealth = value;
+            UpdateHpBar();
         }
     }
 
@@ -49,24 +55,31 @@ public class PlayerHealthManager : MonoBehaviour, IHealthManager
         }
     }
 
-    public void ChangeHealth(int amount)
+    public void Heal(int healValue)
     {
-        if (amount < 0)
+        _currentHealth = Mathf.Clamp(_currentHealth + healValue, 0, _maxHealth);
+        UpdateHpBar();
+    }
+
+    public void GetHit(int damage)
+    {
+        if (isInvincible)
         {
-            if (isInvincible)
-            {
-                return;
-            }
-            isInvincible = true;
-            damageCooldown = timeInvincible;
-           _playerController.animator.SetTrigger("Hit");
+            return;
         }
-        _currentHealth = Mathf.Clamp(_currentHealth + amount, 0, _maxHealth);
-        GameUI.Instance.SetHealthValue(_currentHealth / (float)_maxHealth);
-        if(_currentHealth<=0)
+        isInvincible = true;
+        damageCooldown = timeInvincible;
+        _playerController.animator.SetTrigger("Hit");
+        _currentHealth = Mathf.Clamp(_currentHealth - damage, 0, _maxHealth);
+        UpdateHpBar();
+        if (_currentHealth <= 0)
         {
             Death();
         }
+    }
+    public void UpdateHpBar()
+    {
+        GameUI.Instance.SetHealthValue(_currentHealth / (float)_maxHealth);
     }
     public void Death()
     {

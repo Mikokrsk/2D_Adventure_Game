@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DamageZone : MonoBehaviour
 {
-    [SerializeField] private int _damage = -1;
+    [SerializeField] private int _damage = 1;
 
     void OnTriggerStay2D(Collider2D other)
     {
@@ -13,7 +13,7 @@ public class DamageZone : MonoBehaviour
 
         if (controller != null)
         {
-            controller.healthManager.ChangeHealth(-1);
+            controller.healthManager.GetHit(_damage);
         }
     }
 }

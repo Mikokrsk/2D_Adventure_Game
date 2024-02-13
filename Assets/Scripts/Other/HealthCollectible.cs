@@ -13,7 +13,7 @@ public class HealthCollectible : MonoBehaviour
         if (controller != null && controller.healthManager.Health < controller.healthManager.MaxHealth)
         {
             controller.PlaySound(collectedClip);
-            controller.healthManager.ChangeHealth(_hpPower);
+            controller.healthManager.Heal(_hpPower);
             Destroy(gameObject);
         }
     }
