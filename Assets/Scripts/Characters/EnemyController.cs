@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
     public float speed;
     public bool vertical;
     public float changeTime = 3.0f;
+    [SerializeField] private int _collisionDamage = 1;
     [SerializeField] private bool aggressive = true;
     [SerializeField] private float timer;
     [SerializeField] private int direction = 1;
@@ -66,7 +67,7 @@ public class EnemyController : MonoBehaviour
         PlayerController player = other.gameObject.GetComponent<PlayerController>();
         if (player != null)
         {
-            player.ChangeHealth(-1);
+            player.healthManager.GetHit(_collisionDamage);
         }
     }
 
@@ -78,7 +79,7 @@ public class EnemyController : MonoBehaviour
         return randomAxis;
     }
 
-    public void Fix()
+/*    public void Fix()
     {
         if (!aggressive)
         {
@@ -89,5 +90,5 @@ public class EnemyController : MonoBehaviour
         animator.SetTrigger("Fixed");
         audioWalk.mute = true;
         smokeEffect.Stop();
-    }
+    }*/
 }

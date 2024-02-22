@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6270014071833500551}
   - component: {fileID: 8380226308322437242}
   - component: {fileID: 7937967658597823295}
+  - component: {fileID: 1305222267324163440}
   m_Layer: 8
   m_Name: PlayerCharacter
   m_TagString: Untagged
@@ -34,7 +35,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5699464470266220235}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5843319798690110693
@@ -230,12 +232,8 @@ MonoBehaviour:
   projectilePrefab: {fileID: 3686596645191527415, guid: fbaa9ac7966ae0b4b8f7398dea55c001, type: 3}
   audioSource: {fileID: 0}
   moveDirection: {x: 1, y: 0}
-  maxHealth: 5
   speed: 3
-  currentHealth: 0
-  timeInvincible: 2
-  isInvincible: 0
-  damageCooldown: 0
+  healthManager: {fileID: 1305222267324163440}
 --- !u!50 &5597467730446888400
 Rigidbody2D:
   serializedVersion: 4
@@ -425,3 +423,68 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1305222267324163440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3824135628767375269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6acc07211dede2d42983f1a0bed4fc48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentHealth: 0
+  _maxHealth: 5
+  _playerController: {fileID: 7183788265938655346}
+  timeInvincible: 2
+  isInvincible: 0
+  damageCooldown: 0
+--- !u!1 &4227817484676946526
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5699464470266220235}
+  - component: {fileID: 4870085257396600507}
+  m_Layer: 8
+  m_Name: Savers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5699464470266220235
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4227817484676946526}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5791565078345574222}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4870085257396600507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4227817484676946526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1bd24f247c0ee545919033e36a75da2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uniqueID: 1
+  _executionOrder: 0
+  _transform: {fileID: 5791565078345574222}

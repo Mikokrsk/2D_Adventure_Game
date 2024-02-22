@@ -13,12 +13,61 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] private DropdownField _resolutionDropdownField;
     [SerializeField] private DropdownField _qualityDropdownField;
     [SerializeField] private List<Button> _settingsMenuButtons;
+    [SerializeField] public static SettingsMenu Instance;
+
+    public bool IsFullsreenMode
+    {
+        get
+        {
+            return _fullScreenToggle.value;
+        }
+        set
+        {
+            ChangeScreenMode(value);
+        }
+    }
+    public int ResolutionIndex
+    {
+        get
+        {
+            return _resolutionDropdownField.index;
+        }
+        set
+        {
+            _resolutionDropdownField.index = value;
+        }
+    }
+    public int QualityIndex
+    {
+        get
+        {
+            return _qualityDropdownField.index;
+        }
+        set
+        {
+            _qualityDropdownField.index = value;
+        }
+    }
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     void Start()
     {
         _settingsMenuUI = UIHandler.Instance._uiDocument.rootVisualElement.Q<VisualElement>("SettingsMenuUI");
         _settingsMenuUI.style.display = DisplayStyle.None;
         UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>("CloseSettingsMenuButton").clicked += CloseSettingsMenuUI;
-        UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>("ApplyButton").clicked += ApplySettings;
+        UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>("ApplySettingsMenuButton").clicked += ApplySettings;
+        UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>("SaveSettingsMenuButton").clicked += SaveSettings;
+        UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>("LoadSettingsMenuButton").clicked += LoadSettings;
         _fullScreenToggle = UIHandler.Instance._uiDocument.rootVisualElement.Q<Toggle>("FullScreenToggle");
         _fullScreenToggle.value = true;
         _fullScreenToggle.RegisterCallback<ClickEvent>(ChangeScreenMode);
@@ -50,6 +99,8 @@ public class SettingsMenu : MonoBehaviour
         {
             button.clicked += OpenSettingsMenuUI;
         }
+
+        LoadSettings();
     }
 
     public void OpenSettingsMenuUI()
@@ -59,7 +110,8 @@ public class SettingsMenu : MonoBehaviour
 
     public void CloseSettingsMenuUI()
     {
-        _settingsMenuUI.style.display = DisplayStyle.None;
+         _settingsMenuUI.style.display = DisplayStyle.None;
+        //LoadSettings();
     }
 
     public void ChangeScreenMode(ClickEvent evt)
@@ -67,12 +119,22 @@ public class SettingsMenu : MonoBehaviour
         if (_fullScreenToggle.value)
         {
             Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
-            Debug.Log("FullScreenWindow");
         }
         else
         {
             Screen.fullScreenMode = FullScreenMode.Windowed;
-            Debug.Log("Windowed");
+        }
+    }
+    public void ChangeScreenMode(bool value)
+    {
+        _fullScreenToggle.value = value;
+        if (value)
+        {
+            Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+        }
+        else
+        {
+            Screen.fullScreenMode = FullScreenMode.Windowed;
         }
     }
 
@@ -88,5 +150,17 @@ public class SettingsMenu : MonoBehaviour
                 break;
             }
         }
+
+       // SaveSettings();
+    }
+
+    private void SaveSettings()
+    {
+        Save.SaveSystem.Instance.Save("Assets/Saves/", "settingsSave", ".data");
+    }
+
+    private void LoadSettings()
+    {
+        Save.SaveSystem.Instance.Load("Assets/Saves/", "settingsSave", ".data");
     }
 }

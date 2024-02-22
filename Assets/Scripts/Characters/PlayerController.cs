@@ -9,22 +9,24 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public InputAction talkAction;
     [SerializeField] private Vector2 move;
     [SerializeField] private Rigidbody2D rigidbody2d;
-    [SerializeField] private Animator animator;
+    [SerializeField] public Animator animator;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private Vector2 moveDirection = new Vector2(1, 0);
-    [SerializeField] public int maxHealth = 5;
+    //  [SerializeField] public int maxHealth = 5;
     [SerializeField] public float speed = 3.0f;
-    [SerializeField] public int currentHealth;
+    //   [SerializeField] public int currentHealth;
 
-    [SerializeField] public float timeInvincible = 2.0f;
-    [SerializeField] private bool isInvincible;
-    [SerializeField] private float damageCooldown;
-    public int health { get { return currentHealth; } }
+    public PlayerHealthManager healthManager;
+
+    //   [SerializeField] public float timeInvincible = 2.0f;
+    //  [SerializeField] public bool isInvincible;
+    // [SerializeField] private float damageCooldown;
+    //    public int health { get { return currentHealth; } }
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
+        //       currentHealth = maxHealth;
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
         MoveAction.Enable();
@@ -40,15 +42,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         move = MoveAction.ReadValue<Vector2>();
-
-        if (isInvincible)
-        {
-            damageCooldown -= Time.deltaTime;
-            if (damageCooldown < 0)
-            {
-                isInvincible = false;
-            }
-        }
 
         if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
         {
@@ -67,21 +60,7 @@ public class PlayerController : MonoBehaviour
         rigidbody2d.MovePosition(position);
     }
 
-    public void ChangeHealth(int amount)
-    {
-        if (amount < 0)
-        {
-            if (isInvincible)
-            {
-                return;
-            }
-            isInvincible = true;
-            damageCooldown = timeInvincible;
-            animator.SetTrigger("Hit");
-        }
-        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        GameUI.Instance.SetHealthValue(currentHealth / (float)maxHealth);
-    }
+
 
     void Launch(InputAction.CallbackContext context)
     {

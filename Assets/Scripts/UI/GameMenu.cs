@@ -28,6 +28,8 @@ public class GameMenu : MonoBehaviour
     private void OnEnable()
     {
         UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>("QuitButton").clicked += Quit;
+        UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>("SaveGameButton").clicked += SaveGame;
+        UIHandler.Instance._uiDocument.rootVisualElement.Q<Button>("LoadGameButton").clicked += LoadGame;
         _gameMenuUI = UIHandler.Instance._uiDocument.rootVisualElement.Q<VisualElement>("GameMenuUI");
         _menuToggleAction.Enable();
         _menuToggleAction.performed += ToggleGameMenu;
@@ -65,5 +67,14 @@ public class GameMenu : MonoBehaviour
     public void CloseGameMenuUI()
     {
         _gameMenuUI.style.display = DisplayStyle.None;
+    }
+
+    public void SaveGame()
+    {
+        Save.SaveSystem.Instance.Save("Assets/Saves/", "GameSave", ".data");
+    }
+    public void LoadGame()
+    {
+        Save.SaveSystem.Instance.Load("Assets/Saves/", "GameSave", ".data");
     }
 }

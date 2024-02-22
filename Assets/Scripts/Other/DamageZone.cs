@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class DamageZone : MonoBehaviour
 {
-    [SerializeField] private int _damage = -1;
+    [SerializeField] private int _damage = 1;
 
     void OnTriggerStay2D(Collider2D other)
     {
-        PlayerController controller = other.GetComponent<PlayerController>();
+        PlayerController controller = other.GetComponentInChildren<PlayerController>();
 
 
         if (controller != null)
         {
-            controller.ChangeHealth(-1);
+            controller.healthManager.GetHit(_damage);
         }
     }
 }

@@ -25,11 +25,11 @@ public class HealingZone : MonoBehaviour
         PlayerController controller = other.GetComponent<PlayerController>();
 
 
-        if (controller != null && !isHealing && controller.health < controller.maxHealth)
+        if (controller != null && !isHealing && controller.healthManager.Health < controller.healthManager.MaxHealth)
         {
             isHealing = true;
             damageCooldown = timeHealing;
-            controller.ChangeHealth(healingPower);
+            controller.healthManager.Heal(healingPower);
         }
     }
 }

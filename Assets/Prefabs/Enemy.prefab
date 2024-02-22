@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 4765162145242178844}
   - component: {fileID: 660597819614117528}
   - component: {fileID: 4042575124988914578}
+  - component: {fileID: 6868680620163919535}
+  - component: {fileID: 1821979131548173982}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -105,6 +107,7 @@ MonoBehaviour:
   speed: 0.5
   vertical: 0
   changeTime: 3
+  _collisionDamage: 1
   aggressive: 1
   timer: 0
   direction: 1
@@ -301,6 +304,38 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6868680620163919535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6415216719318296037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1bd24f247c0ee545919033e36a75da2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uniqueID: 2
+  _executionOrder: 0
+  _transform: {fileID: 8910632655198840258}
+--- !u!114 &1821979131548173982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6415216719318296037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8853f9f17dea7d2429eaa6e91ce3a47a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentHealth: 1
+  _maxHealth: 5
+  timeInvincible: 2
+  isInvincible: 0
+  damageCooldown: 3
 --- !u!1001 &4693988157709430173
 PrefabInstance:
   m_ObjectHideFlags: 0
