@@ -601,6 +601,52 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &798778820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 798778822}
+  - component: {fileID: 798778824}
+  m_Layer: 0
+  m_Name: MissionsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &798778822
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798778820}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.39737025, y: -0.032647602, z: 0.049875434}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1428387878}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &798778824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798778820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb1c35b395d78744b7cd58eb3d9ecb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missions: []
 --- !u!1 &846207240
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,6 +813,55 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1428387877
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1428387878}
+  - component: {fileID: 1428387879}
+  m_Layer: 0
+  m_Name: Mission_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1428387878
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428387877}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 798778822}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1428387879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428387877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d10af6e2e52ae3741bb1c36c750bc0d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameMission: First mission
+  descriptionMission: Talk to the frog
+  isMissionCompleated: 0
+  isMissionActive: 0
+  _playerController: {fileID: 1896946360}
 --- !u!1 &1547246191
 GameObject:
   m_ObjectHideFlags: 0
@@ -6907,6 +7002,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5791565078345574222, guid: 9517d13a917c445489f884e37437f49b, type: 3}
   m_PrefabInstance: {fileID: 2834263822158228254}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1896946360 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7183788265938655346, guid: 9517d13a917c445489f884e37437f49b, type: 3}
+  m_PrefabInstance: {fileID: 2834263822158228254}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64fb4bc6e1e7f5b45879cc272f7303ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2070361186
 GameObject:
   m_ObjectHideFlags: 0
@@ -7222,7 +7328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8134056036372763218, guid: f52667dc5700cea43afae3872f22ae44, type: 3}
       propertyPath: m_Name
-      value: NPC
+      value: NPC_Frog
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7482,3 +7588,4 @@ SceneRoots:
   - {fileID: 290082200}
   - {fileID: 331443777}
   - {fileID: 9496880}
+  - {fileID: 798778822}

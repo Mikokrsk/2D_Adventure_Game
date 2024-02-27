@@ -8,11 +8,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public InputAction launchAction;
     [SerializeField] public InputAction talkAction;
     [SerializeField] private Vector2 move;
-    [SerializeField] private Rigidbody2D rigidbody2d;
+    [SerializeField] public Rigidbody2D rigidbody2d;
     [SerializeField] public Animator animator;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private Vector2 moveDirection = new Vector2(1, 0);
+    [SerializeField] public Vector2 moveDirection = new Vector2(1, 0);
     //  [SerializeField] public int maxHealth = 5;
     [SerializeField] public float speed = 3.0f;
     //   [SerializeField] public int currentHealth;
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
         launchAction.Enable();
         talkAction.Enable();
         launchAction.performed += Launch;
-        talkAction.performed += FindFriend;
+        talkAction.performed += FindFriendInputAction;
         rigidbody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
@@ -70,19 +70,22 @@ public class PlayerController : MonoBehaviour
         projectile.startPosition = transform.position;
         animator.SetTrigger("Launch");
     }
-    void FindFriend(InputAction.CallbackContext context)
+    void FindFriendInputAction(InputAction.CallbackContext context)
     {
-        RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position + Vector2.up * 0.2f, moveDirection, 1.5f, LayerMask.GetMask("NPC"));
+        var hit = FindFriend();
         if (hit.collider != null)
         {
-            Debug.Log("Raycast has hit the object " + hit.collider.gameObject);
-
             NonPlayerCharacter character = hit.collider.GetComponent<NonPlayerCharacter>();
             if (character != null)
             {
                 character.DisplayDialogue();
             }
         }
+    }
+    public RaycastHit2D FindFriend()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position + Vector2.up * 0.2f, moveDirection, 1.5f, LayerMask.GetMask("NPC"));
+        return hit;
     }
 
     public void PlaySound(AudioClip clip)
