@@ -18,6 +18,7 @@ namespace LevelMission
         private void ActivateMission()
         {
             isMissionActive = true;
+            MissionManager.Instance.SetNameAndDescriptionMission(nameMission, descriptionMission);
             _playerController.talkAction.performed += IsMissionCompleated;
             PrintMission();
         }
@@ -25,6 +26,7 @@ namespace LevelMission
         private void DeactivateMission()
         {
             isMissionActive = false;
+            MissionManager.Instance.SetNameAndDescriptionMission("...", "...");
             _playerController.talkAction.performed -= IsMissionCompleated;
             PrintMission();
         }
