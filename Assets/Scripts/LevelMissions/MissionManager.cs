@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 public class MissionManager : MonoBehaviour
 {
-    [SerializeField] private List<Mission> missions = new List<Mission>();
+    public List<Mission> missions = new List<Mission>();
     public Label nameMissionLabel;
     public Label missionDescriptionLabel;
     // Start is called before the first frame update

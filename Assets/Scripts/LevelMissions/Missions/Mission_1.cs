@@ -10,7 +10,7 @@ namespace LevelMission
     public class Mission_1 : Mission
     {
         [SerializeField] private PlayerController _playerController;
-
+        [SerializeField] private Mission_2 _mission_2;
         private void Start()
         {
             ActivateMission();
@@ -29,6 +29,8 @@ namespace LevelMission
             MissionManager.Instance.SetNameAndDescriptionMission("...", "...");
             _playerController.talkAction.performed -= IsMissionCompleated;
             PrintMission();
+            _mission_2.ActivateMission();
+            Destroy(this);
         }
 
         private void IsMissionCompleated(InputAction.CallbackContext context)
