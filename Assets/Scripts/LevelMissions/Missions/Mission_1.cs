@@ -30,6 +30,11 @@ namespace LevelMission
             _playerController.talkAction.performed -= IsMissionCompleated;
             PrintMission();
             _mission_2.ActivateMission();
+
+            if (isMissionCompleated)
+            {
+                MissionManager.Instance.ShowMissionCompleatedUI(nameMission, descriptionMission);
+            }
             Destroy(this);
         }
 

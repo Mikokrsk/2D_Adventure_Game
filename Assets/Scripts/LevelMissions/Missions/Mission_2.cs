@@ -23,28 +23,27 @@ namespace LevelMission
             isMissionActive = false;
             MissionManager.Instance.SetNameAndDescriptionMission("...", "...");
             PrintMission();
+
+            if (isMissionCompleated)
+            {
+                MissionManager.Instance.ShowMissionCompleatedUI(nameMission, descriptionMission);
+            }
             Destroy(this);
         }
         private void Update()
         {
             if (isMissionActive)
             {
-                if (IsMissionCompleated())
-                {
-                    DeactivateMission();
-                }
+                IsMissionCompleated();
             }
         }
 
-        private bool IsMissionCompleated()
+        private void IsMissionCompleated()
         {
-            if (_enemy != null)
+            if (_enemy == null)
             {
-                return false;
-            }
-            else
-            {
-                return true;
+                isMissionCompleated = true;
+                DeactivateMission();
             }
         }
     }
