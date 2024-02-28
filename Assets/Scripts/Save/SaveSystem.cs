@@ -52,13 +52,19 @@ namespace Save
 
             foreach (var savableComponent in GetOrderedSavableComponents())
             {
-                componentsData.Add(savableComponent.uniqueID, savableComponent.Serialize());
+                Debug.Log(savableComponent.uniqueID);
+                if (!componentsData.ContainsKey(savableComponent.uniqueID))
+                {
+                    componentsData.Add(savableComponent.uniqueID, savableComponent.Serialize());
+                    Debug.Log(savableComponent.uniqueID + " - " + savableComponent.executionOrder);
+                }
             }
 
             BinaryFormatter formatter = new BinaryFormatter();
 
             using (FileStream stream = new FileStream(folderPath + fileName + fileFormat, FileMode.Create))
                 formatter.Serialize(stream, componentsData);
+            Debug.Log("FileCreted");
         }
 
         public virtual void Load(string folderPath, string fileName, string fileFormat)
