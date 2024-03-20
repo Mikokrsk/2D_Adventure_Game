@@ -27,13 +27,16 @@ public class TransformSaver : MonoBehaviour, ISavableComponent
 
     private void Awake()
     {
-        _transform = GetComponent<Transform>();
+        if (_transform == null)
+        {
+            _transform = GetComponent<Transform>();
+        }
     }
     public ComponentData Serialize()
     {
 
         ExtendedComponentData data = new ExtendedComponentData();
-        data.SetTransform(_transformName,_transform);
+        data.SetTransform(_transformName, _transform);
         return data;
     }
     public void Deserialize(ComponentData data)

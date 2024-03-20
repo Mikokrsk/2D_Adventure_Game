@@ -2,31 +2,65 @@
     <Style src="project://database/Assets/Styles/LevelsMenuUIStyle.uss?fileID=7433441132597879392&amp;guid=f576f8a6a65336c4b87ce1406b61fca4&amp;type=3#LevelsMenuUIStyle" />
     <ui:VisualElement name="Background" style="flex-grow: 1; align-self: center; width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/Assets/2D%20Casual%20UI/Sprite/GUI.png?fileID=21300022&amp;guid=1eaee135ce037439d925cee5e41ce026&amp;type=3#GUI_11&apos;); justify-content: flex-start; padding-top: 2%; padding-right: 2%; padding-left: 2%; padding-bottom: 2%;">
         <ui:Label tabindex="-1" text="Levels" parse-escape-sequences="true" display-tooltip-when-elided="true" style="-unity-text-align: upper-center; font-size: 100%; -unity-font-style: bold;" />
-        <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="ScrollView" style="width: 100%; height: 100%; align-self: flex-start; flex-direction: column; align-items: center; justify-content: flex-start; flex-wrap: wrap;">
-            <ui:VisualElement name="RowLevels1" class="row-level" style="position: relative; flex-wrap: wrap; flex-direction: row; align-items: flex-start; justify-content: flex-start; align-self: center; height: 50%;">
+        <ui:VisualElement style="flex-grow: 1; display: none; visibility: hidden;">
+            <ui:VisualElement name="Level2" class="level-container">
+                <ui:VisualElement name="LevelImage" class="level-image" />
+                <ui:Button text="Load Level" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LoadLevelButton2" class="load-level-button" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Level3" class="level-container">
+                <ui:VisualElement name="LevelImage" class="level-image" />
+                <ui:Button text="Load Level" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LoadLevelButton3" class="load-level-button" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Level4" class="level-container">
+                <ui:VisualElement name="LevelImage" class="level-image" />
+                <ui:Button text="Load Level" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LoadLevelButton4" class="load-level-button" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Level5" class="level-container">
+                <ui:VisualElement name="LevelImage" class="level-image" />
+                <ui:Button text="Load Level" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LoadLevelButton5" class="load-level-button" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Level6" class="level-container">
+                <ui:VisualElement name="LevelImage" class="level-image" />
+                <ui:Button text="Load Level" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LoadLevelButton6" class="load-level-button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="ScrollView" style="width: 100%; height: 100%; align-self: flex-start; flex-direction: column; align-items: center; justify-content: flex-start; flex-wrap: nowrap;">
+            <ui:VisualElement name="RowLevels1" class="row-level" style="display: flex;">
                 <ui:VisualElement name="Level1" class="level-container">
-                    <ui:VisualElement name="LevelImage" class="level-image" />
+                    <ui:VisualElement class="level-image" style="background-image: url(&apos;project://database/Assets/Assets/2D%20Casual%20UI/Sprite/GUI.png?fileID=21300056&amp;guid=1eaee135ce037439d925cee5e41ce026&amp;type=3#GUI_28&apos;); -unity-background-scale-mode: scale-and-crop; display: flex; min-width: auto; min-height: auto; padding-top: 24px; padding-right: 29px; padding-bottom: 34px; padding-left: 27px;">
+                        <ui:VisualElement name="LevelImage" class="level-image" style="display: flex; background-image: url(&apos;project://database/Assets/Art/LevelMenuBackground/1.png?fileID=21300000&amp;guid=1190f878d820cea489a329a7beac5026&amp;type=3#1&apos;);" />
+                    </ui:VisualElement>
                     <ui:Button text="Load Level" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LoadLevelButton1" class="load-level-button" />
                 </ui:VisualElement>
                 <ui:VisualElement name="Level2" class="level-container">
-                    <ui:VisualElement name="LevelImage" class="level-image" />
-                    <ui:Button text="Load Level" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LoadLevelButton2" class="load-level-button" />
+                    <ui:VisualElement class="level-image" style="background-image: url(&apos;project://database/Assets/Assets/2D%20Casual%20UI/Sprite/GUI.png?fileID=21300056&amp;guid=1eaee135ce037439d925cee5e41ce026&amp;type=3#GUI_28&apos;); -unity-background-scale-mode: scale-and-crop; display: flex; min-width: auto; min-height: auto; padding-top: 24px; padding-right: 29px; padding-bottom: 34px; padding-left: 27px;">
+                        <ui:VisualElement name="LevelImage" class="level-image" style="display: flex; background-image: url(&apos;project://database/Assets/Art/Ducko/Environmnent/DamageZone.png?fileID=21300000&amp;guid=3325234d9883550489ddb29f3e66f9c1&amp;type=3#DamageZone&apos;); -unity-background-scale-mode: scale-and-crop; opacity: 0.75;" />
+                    </ui:VisualElement>
+                    <ui:Button text="Load Level" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LoadLevelButton1" class="load-level-button" />
                 </ui:VisualElement>
                 <ui:VisualElement name="Level3" class="level-container">
-                    <ui:VisualElement name="LevelImage" class="level-image" />
-                    <ui:Button text="Load Level" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LoadLevelButton3" class="load-level-button" />
+                    <ui:VisualElement class="level-image" style="background-image: url(&apos;project://database/Assets/Assets/2D%20Casual%20UI/Sprite/GUI.png?fileID=21300056&amp;guid=1eaee135ce037439d925cee5e41ce026&amp;type=3#GUI_28&apos;); -unity-background-scale-mode: scale-and-crop; display: flex; min-width: auto; min-height: auto; padding-top: 24px; padding-right: 29px; padding-bottom: 34px; padding-left: 27px;">
+                        <ui:VisualElement name="LevelImage" class="level-image" style="display: flex; background-image: url(&apos;project://database/Assets/Art/Ducko/Environmnent/DamageZone.png?fileID=21300000&amp;guid=3325234d9883550489ddb29f3e66f9c1&amp;type=3#DamageZone&apos;); -unity-background-scale-mode: scale-and-crop; opacity: 0.75;" />
+                    </ui:VisualElement>
+                    <ui:Button text="Load Level" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LoadLevelButton1" class="load-level-button" />
                 </ui:VisualElement>
                 <ui:VisualElement name="Level4" class="level-container">
-                    <ui:VisualElement name="LevelImage" class="level-image" />
-                    <ui:Button text="Load Level" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LoadLevelButton4" class="load-level-button" />
+                    <ui:VisualElement class="level-image" style="background-image: url(&apos;project://database/Assets/Assets/2D%20Casual%20UI/Sprite/GUI.png?fileID=21300056&amp;guid=1eaee135ce037439d925cee5e41ce026&amp;type=3#GUI_28&apos;); -unity-background-scale-mode: scale-and-crop; display: flex; min-width: auto; min-height: auto; padding-top: 24px; padding-right: 29px; padding-bottom: 34px; padding-left: 27px;">
+                        <ui:VisualElement name="LevelImage" class="level-image" style="display: flex; background-image: url(&apos;project://database/Assets/Art/Ducko/Environmnent/DamageZone.png?fileID=21300000&amp;guid=3325234d9883550489ddb29f3e66f9c1&amp;type=3#DamageZone&apos;); -unity-background-scale-mode: scale-and-crop; opacity: 0.75;" />
+                    </ui:VisualElement>
+                    <ui:Button text="Load Level" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LoadLevelButton1" class="load-level-button" />
                 </ui:VisualElement>
-                <ui:VisualElement name="Level5" class="level-container">
-                    <ui:VisualElement name="LevelImage" class="level-image" />
-                    <ui:Button text="Load Level" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LoadLevelButton5" class="load-level-button" />
+                <ui:VisualElement name="LevelNonVisible" class="level-container" style="display: flex; visibility: hidden;">
+                    <ui:VisualElement class="level-image" style="background-image: url(&apos;project://database/Assets/Assets/2D%20Casual%20UI/Sprite/GUI.png?fileID=21300056&amp;guid=1eaee135ce037439d925cee5e41ce026&amp;type=3#GUI_28&apos;); -unity-background-scale-mode: scale-and-crop; display: flex; min-width: auto; min-height: auto; padding-top: 24px; padding-right: 29px; padding-bottom: 34px; padding-left: 27px;">
+                        <ui:VisualElement name="LevelImage" class="level-image" style="display: flex; background-image: url(&apos;project://database/Assets/Art/Ducko/Environmnent/DamageZone.png?fileID=21300000&amp;guid=3325234d9883550489ddb29f3e66f9c1&amp;type=3#DamageZone&apos;); -unity-background-scale-mode: scale-and-crop; opacity: 0.75;" />
+                    </ui:VisualElement>
+                    <ui:Button text="Load Level" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LoadLevelButton1" class="load-level-button" />
                 </ui:VisualElement>
-                <ui:VisualElement name="Level6" class="level-container">
-                    <ui:VisualElement name="LevelImage" class="level-image" />
-                    <ui:Button text="Load Level" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LoadLevelButton6" class="load-level-button" />
+                <ui:VisualElement name="LevelNonVisible" class="level-container" style="visibility: hidden;">
+                    <ui:VisualElement class="level-image" style="background-image: url(&apos;project://database/Assets/Assets/2D%20Casual%20UI/Sprite/GUI.png?fileID=21300056&amp;guid=1eaee135ce037439d925cee5e41ce026&amp;type=3#GUI_28&apos;); -unity-background-scale-mode: scale-and-crop; display: flex; min-width: auto; min-height: auto; padding-top: 24px; padding-right: 29px; padding-bottom: 34px; padding-left: 27px;">
+                        <ui:VisualElement name="LevelImage" class="level-image" style="display: flex; background-image: url(&apos;project://database/Assets/Art/Ducko/Environmnent/DamageZone.png?fileID=21300000&amp;guid=3325234d9883550489ddb29f3e66f9c1&amp;type=3#DamageZone&apos;); -unity-background-scale-mode: scale-and-crop; opacity: 0.75;" />
+                    </ui:VisualElement>
+                    <ui:Button text="Load Level" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LoadLevelButton1" class="load-level-button" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:ScrollView>
