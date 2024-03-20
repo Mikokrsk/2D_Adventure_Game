@@ -171,6 +171,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3826580209846526558, guid: ce7088d176426654aaec30f5b5997c7d, type: 3}
+      propertyPath: delay
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826580209846526558, guid: ce7088d176426654aaec30f5b5997c7d, type: 3}
+      propertyPath: afterDelay
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826580209846526558, guid: ce7088d176426654aaec30f5b5997c7d, type: 3}
+      propertyPath: opacityValue
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826580209846526558, guid: ce7088d176426654aaec30f5b5997c7d, type: 3}
+      propertyPath: _showMissionTabAction.m_Id
+      value: 5076d276-f2e9-43c6-99dc-508de703aac1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826580209846526558, guid: ce7088d176426654aaec30f5b5997c7d, type: 3}
+      propertyPath: _showMissionTabAction.m_Name
+      value: Show Mission Tab
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826580209846526558, guid: ce7088d176426654aaec30f5b5997c7d, type: 3}
+      propertyPath: _showMissionTabAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826580209846526558, guid: ce7088d176426654aaec30f5b5997c7d, type: 3}
+      propertyPath: _showMissionTabAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 3c0758bc-dee0-41f0-964e-3e9457f651a3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826580209846526558, guid: ce7088d176426654aaec30f5b5997c7d, type: 3}
+      propertyPath: _showMissionTabAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/tab
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826580209846526558, guid: ce7088d176426654aaec30f5b5997c7d, type: 3}
+      propertyPath: _showMissionTabAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Show Mission Tab
+      objectReference: {fileID: 0}
     - target: {fileID: 4007355034243812923, guid: ce7088d176426654aaec30f5b5997c7d, type: 3}
       propertyPath: m_Name
       value: GameManager
