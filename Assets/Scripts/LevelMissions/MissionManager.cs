@@ -12,7 +12,12 @@ public class MissionManager : MonoBehaviour
     public Label missionDescriptionLabel;
     public Label compleatedMissionNameLabel;
     public Label compleatedMissionDescriptionLabel;
+    public Label newMissionNameLabel;
+    public Label newMissionDescriptionLabel;
     public VisualElement missionCompleatedUI;
+    public VisualElement newMissionUI;
+    [SerializeField] private float _hideMissionCompleatedUIAfterDelay;
+    [SerializeField] private float _hideNewMissionUIAfterDelay;
     // Start is called before the first frame update
     public static MissionManager Instance { get; private set; }
 
@@ -32,12 +37,19 @@ public class MissionManager : MonoBehaviour
     {
         nameMissionLabel = UIHandler.Instance._uiDocument.rootVisualElement.Q<Label>("MissionNameLabel");
         missionDescriptionLabel = UIHandler.Instance._uiDocument.rootVisualElement.Q<Label>("MissionDescriptionLabel");
+
         missionCompleatedUI = UIHandler.Instance._uiDocument.rootVisualElement.Q<VisualElement>("MissionCompleatedUI");
         compleatedMissionNameLabel = UIHandler.Instance._uiDocument.rootVisualElement.Q<Label>("CompleatedMissionNameLabel");
         compleatedMissionDescriptionLabel = UIHandler.Instance._uiDocument.rootVisualElement.Q<Label>("CompleatedMissionDescriptionLabel");
+
+        newMissionUI = UIHandler.Instance._uiDocument.rootVisualElement.Q<VisualElement>("NewMissionUI");
+        newMissionNameLabel = UIHandler.Instance._uiDocument.rootVisualElement.Q<Label>("NewMissionNameLabel");
+        newMissionDescriptionLabel = UIHandler.Instance._uiDocument.rootVisualElement.Q<Label>("NewMissionDescriptionLabel");
+
         missions.Clear();
         missions.AddRange(GetComponentsInChildren<Mission>());
         missionCompleatedUI.style.display = DisplayStyle.None;
+        newMissionUI.style.display = DisplayStyle.None;
     }
 
     // Update is called once per frame
@@ -62,8 +74,7 @@ public class MissionManager : MonoBehaviour
         compleatedMissionNameLabel.text = missionName;
         compleatedMissionDescriptionLabel.text = missionDescription;
         missionCompleatedUI.style.display = DisplayStyle.Flex;
-        Invoke("HideMissionCompleatedUI", 2f);
-
+        Invoke("HideMissionCompleatedUI", _hideMissionCompleatedUIAfterDelay);
     }
     public void HideMissionCompleatedUI()
     {
@@ -71,6 +82,19 @@ public class MissionManager : MonoBehaviour
         compleatedMissionDescriptionLabel.text = string.Empty;
         missionCompleatedUI.style.display = DisplayStyle.None;
     }
-
+    public void ShowNewMissionUI(string missionName, string missionDescription)
+    {
+        SetNameAndDescriptionMission(missionName, missionDescription);
+        newMissionNameLabel.text = missionName;
+        newMissionDescriptionLabel.text = missionDescription;
+        newMissionUI.style.display = DisplayStyle.Flex;
+        Invoke("HideNewMissionUI", _hideNewMissionUIAfterDelay);
+    }
+    public void HideNewMissionUI()
+    {
+        newMissionNameLabel.text = string.Empty;
+        newMissionDescriptionLabel.text = string.Empty;
+        newMissionUI.style.display = DisplayStyle.None;
+    }
 
 }

@@ -720,6 +720,7 @@ MonoBehaviour:
   _playerController: {fileID: 1896946360}
   _enemy: {fileID: 6415216719318296037, guid: 7dbf442cea57ff24fb557862e97bb425, type: 3}
   _enemySpawnPosition: {fileID: 59237390}
+  _mission1: {fileID: 1428387879}
 --- !u!1 &798778820
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,6 +768,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missions: []
+  _hideMissionCompleatedUIAfterDelay: 5
+  _hideNewMissionUIAfterDelay: 5
 --- !u!1 &846207240
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,7 +985,6 @@ MonoBehaviour:
   isMissionCompleated: 0
   isMissionActive: 0
   _playerController: {fileID: 1896946360}
-  _mission_2: {fileID: 781331877}
 --- !u!1 &1547246191
 GameObject:
   m_ObjectHideFlags: 0

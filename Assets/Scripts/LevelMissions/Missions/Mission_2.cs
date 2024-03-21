@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 namespace LevelMission
 {
@@ -10,11 +11,12 @@ namespace LevelMission
         [SerializeField] private PlayerController _playerController;
         [SerializeField] GameObject _enemy;
         [SerializeField] Transform _enemySpawnPosition;
+        [SerializeField] Mission _mission1;
         public void ActivateMission()
         {
             isMissionActive = true;
-            MissionManager.Instance.SetNameAndDescriptionMission(nameMission, descriptionMission);
-            PrintMission();
+            MissionManager.Instance.ShowNewMissionUI(nameMission, descriptionMission);
+            // MissionManager.Instance.SetNameAndDescriptionMission(nameMission, descriptionMission);
             _enemy = Instantiate(_enemy, _enemySpawnPosition);
         }
 
@@ -22,19 +24,29 @@ namespace LevelMission
         {
             isMissionActive = false;
             MissionManager.Instance.SetNameAndDescriptionMission("...", "...");
-            PrintMission();
 
             if (isMissionCompleated)
             {
                 MissionManager.Instance.ShowMissionCompleatedUI(nameMission, descriptionMission);
             }
-            Destroy(this);
+            //  Destroy(this);
         }
         private void Update()
         {
+            if (isMissionCompleated)
+            {
+                return;
+            }
             if (isMissionActive)
             {
                 IsMissionCompleated();
+            }
+            else
+            {
+                if (_mission1.isMissionCompleated && !isMissionActive && MissionManager.Instance.missionCompleatedUI.style.display == DisplayStyle.None)
+                {
+                    ActivateMission();
+                }
             }
         }
 

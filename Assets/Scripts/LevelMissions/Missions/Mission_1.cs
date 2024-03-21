@@ -10,32 +10,26 @@ namespace LevelMission
     public class Mission_1 : Mission
     {
         [SerializeField] private PlayerController _playerController;
-        [SerializeField] private Mission_2 _mission_2;
+        // [SerializeField] private Mission_2 _mission_2;
         private void Start()
         {
-            ActivateMission();
+            // ActivateMission();
+            Invoke("ActivateMission", 5f);
         }
         private void ActivateMission()
         {
             isMissionActive = true;
-            MissionManager.Instance.SetNameAndDescriptionMission(nameMission, descriptionMission);
+            MissionManager.Instance.ShowNewMissionUI(nameMission, descriptionMission);
+            // MissionManager.Instance.SetNameAndDescriptionMission(nameMission, descriptionMission);
             _playerController.talkAction.performed += IsMissionCompleated;
-            PrintMission();
         }
 
         private void DeactivateMission()
         {
-            isMissionActive = false;
             MissionManager.Instance.SetNameAndDescriptionMission("...", "...");
             _playerController.talkAction.performed -= IsMissionCompleated;
-            PrintMission();
-            _mission_2.ActivateMission();
-
-            if (isMissionCompleated)
-            {
-                MissionManager.Instance.ShowMissionCompleatedUI(nameMission, descriptionMission);
-            }
-            Destroy(this);
+            // _mission_2.ActivateMission();
+            //   Destroy(this);
         }
 
         private void IsMissionCompleated(InputAction.CallbackContext context)
@@ -47,6 +41,8 @@ namespace LevelMission
                 if (_playerController.FindFriend().collider.name == "NPC_Frog")
                 {
                     isMissionCompleated = true;
+                    isMissionActive = false;
+                    MissionManager.Instance.ShowMissionCompleatedUI(nameMission, descriptionMission);
                     DeactivateMission();
                 }
             }

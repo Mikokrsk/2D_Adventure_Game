@@ -10,12 +10,12 @@ namespace LevelMission
         public string descriptionMission;
         public bool isMissionCompleated;
         public bool isMissionActive;
-
-        public void PrintMission()
-        {
-            Debug.Log(nameMission);
-            Debug.Log(descriptionMission);
-            Debug.Log(isMissionCompleated);
-        }
+        /*
+                public void PrintMission()
+                {
+                    Debug.Log(nameMission);
+                    Debug.Log(descriptionMission);
+                    Debug.Log(isMissionCompleated);
+                }*/
     }
 }
