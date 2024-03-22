@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cca69b468d06b8f458674e76f1381019, type: 3}
+  m_Name: FirstDialogue
+  m_EditorClassIdentifier: 
+  dialogueSections:
+  - dialogue:
+    - phrase 1
+    - phrase 2
+    endAfterDialogue: 1
+    branchPoint:
+      question: question 1
+      answers:
+      - answerLabel: answer 1
+        nextDialogueSection: 1
+      - answerLabel: answer 2
+        nextDialogueSection: -1
+  - dialogue:
+    - phrase 3
+    endAfterDialogue: 1
+    branchPoint:
+      question: 
+      answers: []

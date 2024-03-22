@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class NonPlayerCharacter : MonoBehaviour
 {
-    [SerializeField] private string _DialogText = "...";
+    [SerializeField] private DialogueAsset _dialogueAsset;
+    [SerializeField] private int _currentDialogueSection = 0;
+    [SerializeField] private NPCDialogueManager _dialogueManager;
 
-    public void DisplayDialogue()
+    public void Interaction()
     {
-        GameUI.Instance.DisplayDialogue(_DialogText);
+        _dialogueManager.StartDialogue(_dialogueAsset, _currentDialogueSection);
     }
-
 }

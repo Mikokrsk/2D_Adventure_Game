@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
             NonPlayerCharacter character = hit.collider.GetComponent<NonPlayerCharacter>();
             if (character != null)
             {
-                character.DisplayDialogue();
+                character.Interaction();
             }
         }
     }
