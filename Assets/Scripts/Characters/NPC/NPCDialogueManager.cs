@@ -1,35 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+
 public class NPCDialogueManager : MonoBehaviour
 {
-    [SerializeField] private VisualElement _dialogueBox;
-    [SerializeField] private Label _dialogueLabel;
-    //  [SerializeField] private float _TimerDisplay;
+    // [Header("Dialogue")]
+    [SerializeField] private DialogueAsset _currentDialogueTree;
+    private VisualElement _dialogueBox;
+    private Label _dialogueLabel;
+
+    //  [Header("Answers")]
+    [SerializeField] private StyleSheet _answersStyleSheet;
+    private VisualElement _answersBox;
+    private ScrollView _answersScrollView;
 
     void Start()
     {
         _dialogueBox = UIHandler.Instance._uiDocument.rootVisualElement.Q<VisualElement>("NPCDialogue");
+        _answersBox = UIHandler.Instance._uiDocument.rootVisualElement.Q<VisualElement>("AnswersBox");
+        _answersScrollView = UIHandler.Instance._uiDocument.rootVisualElement.Q<ScrollView>("AnswersScrollView");
         _dialogueLabel = UIHandler.Instance._uiDocument.rootVisualElement.Q<Label>("DialogText");
         _dialogueBox.style.display = DisplayStyle.None;
-        //  _TimerDisplay = -1.0f;
+        _answersBox.style.display = DisplayStyle.None;
     }
 
     public void StartDialogue(DialogueAsset dialogueTree, int startSection)
     {
         ResetDialogueBox();
-        // nameText.text = name + "...";
+        _currentDialogueTree = dialogueTree;
         _dialogueBox.style.display = DisplayStyle.Flex;
-        // OnDialogueStarted?.Invoke();
         StartCoroutine(RunDialogue(dialogueTree, startSection));
+    }
+
+    public void EndDialogue()
+    {
+        ResetDialogueBox();
+        _dialogueBox.style.display = DisplayStyle.None;
     }
 
     public void ResetDialogueBox()
     {
-        _dialogueBox.style.display = DisplayStyle.None;
+        _answersBox.style.display = DisplayStyle.None;
+        _currentDialogueTree = null;
+        _answersScrollView.Clear();
     }
 
     IEnumerator RunDialogue(DialogueAsset dialogueTree, int section)
@@ -38,69 +55,50 @@ public class NPCDialogueManager : MonoBehaviour
         {
             _dialogueLabel.text = dialogueTree.dialogueSections[section].dialogue[i];
             yield return new WaitForSeconds(3f);
-            /*            while (skipLineTriggered == false)
-                        {
-                            yield return null;
-                        }
-                        skipLineTriggered = false;*/
         }
         if (dialogueTree.dialogueSections[section].endAfterDialogue)
         {
-            // OnDialogueEnded?.Invoke();
             _dialogueBox.style.display = DisplayStyle.None;
+            EndDialogue();
             yield break;
         }
-
-        /*
-
-                dialogueText.text = dialogueTree.sections[section].branchPoint.question;
-                ShowAnswers(dialogueTree.sections[section].branchPoint);
-
-                while (answerTriggered == false)
-                {
-                    yield return null;
-                }
-                answerBox.SetActive(false);
-                answerTriggered = false;
-
-                StartCoroutine(RunDialogue(dialogueTree, dialogueTree.sections[section].branchPoint.answers[answerIndex].nextElement));*/
-    }
-    /*    public void DisplayDialogue(string dialogText)
+        if (!dialogueTree.dialogueSections[section].endAfterDialogue)
         {
-            _NonPlayerDialogueUI.Q<Label>("DialogText").text = dialogText;
-            _NonPlayerDialogueUI.style.display = DisplayStyle.Flex;
-            _TimerDisplay = _displayTime;
-        }*/
+            ShowAnswers(dialogueTree.dialogueSections[section].branchPoint.answers);
+        }
+    }
 
-    /* IEnumerator RunDialogue(DialogueAsset dialogueTree, int section)
-     {
-         for (int i = 0; i < dialogueTree.dialogueSections[section].dialogue.Length; i++)
-         {
-             dialogueText.text = dialogueTree.sections[section].dialogue[i];
-             while (skipLineTriggered == false)
-             {
-                 yield return null;
-             }
-             skipLineTriggered = false;
-         }
+    public void ShowAnswers(DialogueAsset.Answer[] answers)
+    {
+        _answersBox.style.display = DisplayStyle.Flex;
 
-         if (dialogueTree.sections[section].endAfterDialogue)
-         {
-             OnDialogueEnded?.Invoke();
-             dialogueBox.SetActive(false);
-             yield break;
-         }
+        for (int i = 0; i < answers.Length; i++)
+        {
+            var answerButton = CreateAnswerButton(_currentDialogueTree, answers[i].answerLabel, answers[i].nextDialogueSection);
+            _answersScrollView.Insert(i, answerButton);
+        }
+    }
 
-         dialogueText.text = dialogueTree.sections[section].branchPoint.question;
-         ShowAnswers(dialogueTree.sections[section].branchPoint);
+    public Button CreateAnswerButton(DialogueAsset dialogueTree, string answerText, int nextDialogueSection)
+    {
+        var answerButton = new Button();
+        answerButton.AddToClassList("AnswerText");
+        answerButton.text = answerText;
+        if (nextDialogueSection >= 0)
+        {
+            answerButton.clicked += () =>
+            {
+                StartDialogue(_currentDialogueTree, nextDialogueSection);
+            };
+        }
+        else
+        {
+            answerButton.clicked += () =>
+            {
+                EndDialogue();
+            };
+        }
 
-         while (answerTriggered == false)
-         {
-             yield return null;
-         }
-         answerBox.SetActive(false);
-         answerTriggered = false;
-
-         StartCoroutine(RunDialogue(dialogueTree, dialogueTree.sections[section].branchPoint.answers[answerIndex].nextElement));
-     }*/
+        return answerButton;
+    }
 }

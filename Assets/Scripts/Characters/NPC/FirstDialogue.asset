@@ -16,14 +16,16 @@ MonoBehaviour:
   - dialogue:
     - phrase 1
     - phrase 2
-    endAfterDialogue: 1
+    endAfterDialogue: 0
     branchPoint:
       question: question 1
       answers:
       - answerLabel: answer 1
-        nextDialogueSection: 1
+        nextDialogueSection: 0
       - answerLabel: answer 2
         nextDialogueSection: -1
+      - answerLabel: answer 3
+        nextDialogueSection: 1
   - dialogue:
     - phrase 3
     endAfterDialogue: 1
