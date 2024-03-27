@@ -1,3 +1,4 @@
+using LevelMission;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,6 +27,13 @@ public class DialogueAsset : ScriptableObject
     public struct Answer
     {
         public string answerLabel;
+        public MissionEvent[] missionEvents;
         public int nextDialogueSection;
+    }
+    [System.Serializable]
+    public struct MissionEvent
+    {
+        public int missionId;
+        public MissionStatus missionStatus;
     }
 }

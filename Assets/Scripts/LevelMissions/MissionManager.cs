@@ -96,5 +96,16 @@ public class MissionManager : MonoBehaviour
         newMissionDescriptionLabel.text = string.Empty;
         newMissionUI.style.display = DisplayStyle.None;
     }
-
+    public void SetMissionStatusID(int missionId, MissionStatus missionStatus)
+    {
+        var mission = missions.Find(x => x.missionId == missionId);
+        mission.SetMissionStatus(missionStatus);
+    }
+}
+public enum MissionStatus
+{
+    Active,
+    Inactive,
+    Compleated,
+    Failed
 }

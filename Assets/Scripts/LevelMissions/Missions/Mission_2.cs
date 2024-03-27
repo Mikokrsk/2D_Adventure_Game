@@ -10,43 +10,28 @@ namespace LevelMission
     {
         [SerializeField] private PlayerController _playerController;
         [SerializeField] GameObject _enemy;
+        [SerializeField] GameObject _enemyPrefab;
         [SerializeField] Transform _enemySpawnPosition;
-        [SerializeField] Mission _mission1;
-        public void ActivateMission()
+
+        protected override void ActivateMission()
         {
-            isMissionActive = true;
-            MissionManager.Instance.ShowNewMissionUI(nameMission, descriptionMission);
-            // MissionManager.Instance.SetNameAndDescriptionMission(nameMission, descriptionMission);
-            _enemy = Instantiate(_enemy, _enemySpawnPosition);
+            base.ActivateMission();
+            _enemy = Instantiate(_enemyPrefab, _enemySpawnPosition);
         }
-
-        private void DeactivateMission()
+        protected override void FailedMission()
         {
-            isMissionActive = false;
-            MissionManager.Instance.SetNameAndDescriptionMission("...", "...");
-
-            if (isMissionCompleated)
+            base.FailedMission();
+            if (_enemy != null)
             {
-                MissionManager.Instance.ShowMissionCompleatedUI(nameMission, descriptionMission);
+                Destroy(_enemy);
             }
-            //  Destroy(this);
         }
+
         private void Update()
         {
-            if (isMissionCompleated)
-            {
-                return;
-            }
-            if (isMissionActive)
+            if (missionStatus == MissionStatus.Active)
             {
                 IsMissionCompleated();
-            }
-            else
-            {
-                if (_mission1.isMissionCompleated && !isMissionActive && MissionManager.Instance.missionCompleatedUI.style.display == DisplayStyle.None)
-                {
-                    ActivateMission();
-                }
             }
         }
 
@@ -54,8 +39,7 @@ namespace LevelMission
         {
             if (_enemy == null)
             {
-                isMissionCompleated = true;
-                DeactivateMission();
+                SetMissionStatus(MissionStatus.Compleated);
             }
         }
     }

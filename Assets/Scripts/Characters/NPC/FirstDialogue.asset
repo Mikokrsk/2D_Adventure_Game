@@ -21,10 +21,19 @@ MonoBehaviour:
       question: question 1
       answers:
       - answerLabel: answer 1
+        missionEvents:
+        - missionId: 1
+          missionStatus: 2
+        - missionId: 2
+          missionStatus: 0
         nextDialogueSection: 0
       - answerLabel: answer 2
+        missionEvents: []
         nextDialogueSection: -1
       - answerLabel: answer 3
+        missionEvents:
+        - missionId: 2
+          missionStatus: 3
         nextDialogueSection: 1
   - dialogue:
     - phrase 3

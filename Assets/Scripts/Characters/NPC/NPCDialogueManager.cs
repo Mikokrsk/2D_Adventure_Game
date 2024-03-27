@@ -66,10 +66,10 @@ public class NPCDialogueManager : MonoBehaviour
             EndDialogue();
             yield break;
         }
-        if (!dialogueTree.dialogueSections[section].endAfterDialogue)
+        else
         {
             StartCoroutine(PrintPhrase(dialogueTree.dialogueSections[section].branchPoint.question));
-            yield return new WaitForSeconds(float.Parse(dialogueTree.dialogueSections[section].branchPoint.question.Length.ToString()) + _afterPrintDelay);
+            yield return new WaitForSeconds(Int32.Parse(dialogueTree.dialogueSections[section].branchPoint.question.Length.ToString()) * _printSpeed + _afterPrintDelay);
             ShowAnswers(dialogueTree.dialogueSections[section].branchPoint.answers);
         }
     }
@@ -90,27 +90,41 @@ public class NPCDialogueManager : MonoBehaviour
 
         for (int i = 0; i < answers.Length; i++)
         {
-            var answerButton = CreateAnswerButton(_currentDialogueTree, answers[i].answerLabel, answers[i].nextDialogueSection);
+            var answerButton = CreateAnswerButton(_currentDialogueTree, answers[i]);
             _answersScrollView.Insert(i, answerButton);
         }
     }
 
-    public Button CreateAnswerButton(DialogueAsset dialogueTree, string answerText, int nextDialogueSection)
+    public Button CreateAnswerButton(DialogueAsset dialogueTree, DialogueAsset.Answer answer)
     {
         var answerButton = new Button();
         answerButton.AddToClassList("AnswerText");
-        answerButton.text = answerText;
-        if (nextDialogueSection >= 0)
+        answerButton.text = answer.answerLabel;
+        if (answer.nextDialogueSection >= 0)
         {
             answerButton.clicked += () =>
             {
-                StartDialogue(dialogueTree, nextDialogueSection);
+                if (answer.missionEvents.Length > 0)
+                {
+                    foreach (var missionEvent in answer.missionEvents)
+                    {
+                        MissionManager.Instance.SetMissionStatusID(missionEvent.missionId, missionEvent.missionStatus);
+                    }
+                }
+                StartDialogue(dialogueTree, answer.nextDialogueSection);
             };
         }
         else
         {
             answerButton.clicked += () =>
             {
+                if (answer.missionEvents.Length > 0)
+                {
+                    foreach (var missionEvent in answer.missionEvents)
+                    {
+                        MissionManager.Instance.SetMissionStatusID(missionEvent.missionId, missionEvent.missionStatus);
+                    }
+                }
                 EndDialogue();
             };
         }

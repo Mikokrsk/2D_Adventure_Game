@@ -761,14 +761,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32cb1a88b6ff5654db5183a421b880a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  missionId: 2
   nameMission: Help frog
   descriptionMission: Fix the robot
-  isMissionCompleated: 0
-  isMissionActive: 0
+  missionStatus: 1
   _playerController: {fileID: 1896946360}
-  _enemy: {fileID: 6415216719318296037, guid: 7dbf442cea57ff24fb557862e97bb425, type: 3}
+  _enemy: {fileID: 0}
+  _enemyPrefab: {fileID: 6415216719318296037, guid: 7dbf442cea57ff24fb557862e97bb425, type: 3}
   _enemySpawnPosition: {fileID: 59237390}
-  _mission1: {fileID: 1428387879}
 --- !u!1 &798778820
 GameObject:
   m_ObjectHideFlags: 0
@@ -1028,10 +1028,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d10af6e2e52ae3741bb1c36c750bc0d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  missionId: 1
   nameMission: First mission
   descriptionMission: Talk to the frog
-  isMissionCompleated: 0
-  isMissionActive: 0
+  missionStatus: 1
   _playerController: {fileID: 1896946360}
 --- !u!1 &1547246191
 GameObject:
