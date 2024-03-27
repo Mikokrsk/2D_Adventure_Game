@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,8 @@ public class NPCDialogueManager : MonoBehaviour
 {
     // [Header("Dialogue")]
     [SerializeField] private DialogueAsset _currentDialogueTree;
+    [SerializeField] private float _printSpeed;
+    [SerializeField] private float _afterPrintDelay;
     private VisualElement _dialogueBox;
     private Label _dialogueLabel;
 
@@ -53,8 +56,9 @@ public class NPCDialogueManager : MonoBehaviour
     {
         for (int i = 0; i < dialogueTree.dialogueSections[section].dialogue.Length; i++)
         {
-            _dialogueLabel.text = dialogueTree.dialogueSections[section].dialogue[i];
-            yield return new WaitForSeconds(3f);
+            // _dialogueLabel.text = dialogueTree.dialogueSections[section].dialogue[i];
+            StartCoroutine(PrintPhrase(dialogueTree.dialogueSections[section].dialogue[i]));
+            yield return new WaitForSeconds(Int32.Parse(dialogueTree.dialogueSections[section].dialogue[i].Length.ToString()) * _printSpeed + _afterPrintDelay);
         }
         if (dialogueTree.dialogueSections[section].endAfterDialogue)
         {
@@ -64,7 +68,19 @@ public class NPCDialogueManager : MonoBehaviour
         }
         if (!dialogueTree.dialogueSections[section].endAfterDialogue)
         {
+            StartCoroutine(PrintPhrase(dialogueTree.dialogueSections[section].branchPoint.question));
+            yield return new WaitForSeconds(float.Parse(dialogueTree.dialogueSections[section].branchPoint.question.Length.ToString()) + _afterPrintDelay);
             ShowAnswers(dialogueTree.dialogueSections[section].branchPoint.answers);
+        }
+    }
+
+    IEnumerator PrintPhrase(string phrase)
+    {
+        _dialogueLabel.text = null;
+        for (int i = 0; i < phrase.Length; i++)
+        {
+            _dialogueLabel.text += phrase[i];
+            yield return new WaitForSeconds(_printSpeed);
         }
     }
 
@@ -88,7 +104,7 @@ public class NPCDialogueManager : MonoBehaviour
         {
             answerButton.clicked += () =>
             {
-                StartDialogue(_currentDialogueTree, nextDialogueSection);
+                StartDialogue(dialogueTree, nextDialogueSection);
             };
         }
         else
