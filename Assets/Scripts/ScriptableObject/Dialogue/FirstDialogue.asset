@@ -26,14 +26,18 @@ MonoBehaviour:
           missionStatus: 2
         - missionId: 2
           missionStatus: 0
+        gameEvents:
+        - {fileID: 11400000, guid: b0b1e088c1e56ad418d8d722eba85a8a, type: 2}
         nextDialogueSection: 0
       - answerLabel: answer 2
         missionEvents: []
+        gameEvents: []
         nextDialogueSection: -1
       - answerLabel: answer 3
         missionEvents:
         - missionId: 2
           missionStatus: 3
+        gameEvents: []
         nextDialogueSection: 1
   - dialogue:
     - phrase 3

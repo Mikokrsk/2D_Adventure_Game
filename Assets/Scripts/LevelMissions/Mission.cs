@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace LevelMission
 {
@@ -10,7 +11,6 @@ namespace LevelMission
         public string nameMission;
         public string descriptionMission;
         public MissionStatus missionStatus;
-
 
         protected virtual void ActivateMission()
         {
@@ -24,7 +24,7 @@ namespace LevelMission
             MissionManager.Instance.SetNameAndDescriptionMission("...", "...");
         }
 
-        protected virtual void MissionCompleated()
+        public virtual void MissionCompleated()
         {
             missionStatus = MissionStatus.Compleated;
             MissionManager.Instance.ShowMissionCompleatedUI(nameMission, descriptionMission);

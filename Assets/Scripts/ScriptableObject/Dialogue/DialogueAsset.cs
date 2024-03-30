@@ -1,9 +1,11 @@
 using LevelMission;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "myAssets/Dialogue Asset")]
 public class DialogueAsset : ScriptableObject
 {
     public DialogueSection[] dialogueSections;
@@ -27,13 +29,7 @@ public class DialogueAsset : ScriptableObject
     public struct Answer
     {
         public string answerLabel;
-        public MissionEvent[] missionEvents;
+        public GameEvent[] gameEvents;
         public int nextDialogueSection;
-    }
-    [System.Serializable]
-    public struct MissionEvent
-    {
-        public int missionId;
-        public MissionStatus missionStatus;
     }
 }

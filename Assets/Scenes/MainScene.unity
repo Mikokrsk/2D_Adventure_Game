@@ -247,6 +247,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 781331876}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &61616379
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 61616381}
+  - component: {fileID: 61616380}
+  m_Layer: 0
+  m_Name: GameEventListener
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &61616380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61616379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f27579514a79834787fd7f227672716, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEventsList:
+  - gameEvent: {fileID: 11400000, guid: b0b1e088c1e56ad418d8d722eba85a8a, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1428387879}
+          m_TargetAssemblyTypeName: LevelMission.Mission, Assembly-CSharp
+          m_MethodName: MissionCompleated
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!4 &61616381
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61616379}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.3132837, y: 0.6232336, z: 0.021694247}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &236167800
 GameObject:
   m_ObjectHideFlags: 3
@@ -533,8 +594,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4962b732a0fb8064aa39c719ded10b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentDialogueTree: {fileID: 0}
-  _printSpeed: 0.3
+  _currentDialogueTree: {fileID: 11400000, guid: 1e29e3d3799f001409e30c65478938dd, type: 2}
+  _printSpeed: 0.1
   _afterPrintDelay: 1
   _answersStyleSheet: {fileID: 7433441132597879392, guid: 2d694b17611eb7a41a8eb8cefda34662, type: 3}
 --- !u!4 &532862253
@@ -8517,3 +8578,4 @@ SceneRoots:
   - {fileID: 9496880}
   - {fileID: 798778822}
   - {fileID: 532862253}
+  - {fileID: 61616381}

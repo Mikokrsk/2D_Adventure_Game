@@ -104,12 +104,9 @@ public class NPCDialogueManager : MonoBehaviour
         {
             answerButton.clicked += () =>
             {
-                if (answer.missionEvents.Length > 0)
+                foreach (var gameEvent in answer.gameEvents)
                 {
-                    foreach (var missionEvent in answer.missionEvents)
-                    {
-                        MissionManager.Instance.SetMissionStatusID(missionEvent.missionId, missionEvent.missionStatus);
-                    }
+                    gameEvent.Raise();
                 }
                 StartDialogue(dialogueTree, answer.nextDialogueSection);
             };
@@ -118,12 +115,9 @@ public class NPCDialogueManager : MonoBehaviour
         {
             answerButton.clicked += () =>
             {
-                if (answer.missionEvents.Length > 0)
+                foreach (var gameEvent in answer.gameEvents)
                 {
-                    foreach (var missionEvent in answer.missionEvents)
-                    {
-                        MissionManager.Instance.SetMissionStatusID(missionEvent.missionId, missionEvent.missionStatus);
-                    }
+                    gameEvent.Raise();
                 }
                 EndDialogue();
             };
