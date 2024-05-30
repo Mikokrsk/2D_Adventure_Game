@@ -13,12 +13,12 @@ namespace LevelMission
         [SerializeField] GameObject _enemyPrefab;
         [SerializeField] Transform _enemySpawnPosition;
 
-        protected override void ActivateMission()
+        public override void ActivateMission()
         {
             base.ActivateMission();
             _enemy = Instantiate(_enemyPrefab, _enemySpawnPosition);
         }
-        protected override void FailedMission()
+        public override void FailedMission()
         {
             base.FailedMission();
             if (_enemy != null)

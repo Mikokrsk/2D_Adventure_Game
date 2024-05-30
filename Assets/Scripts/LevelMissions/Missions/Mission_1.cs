@@ -11,9 +11,15 @@ namespace LevelMission
     {
         [SerializeField] private PlayerController _playerController;
 
-        private void Start()
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            Invoke("ActivateMission", 1f);
+            if (collision != null)
+            {
+                if (collision.CompareTag("Player") && missionStatus == MissionStatus.Inactive)
+                {
+                    ActivateMission();
+                }
+            }
         }
     }
 }

@@ -13,7 +13,8 @@ public class DialogueAsset : ScriptableObject
     [System.Serializable]
     public struct DialogueSection
     {
-        [TextArea]
+        public GameEvent[] dialogueEvents;
+        [TextArea]       
         public string[] dialogue;
         public bool endAfterDialogue;
         public BranchPoint branchPoint;

@@ -13,34 +13,42 @@ MonoBehaviour:
   m_Name: FirstDialogue
   m_EditorClassIdentifier: 
   dialogueSections:
-  - dialogue:
-    - phrase 1
-    - phrase 2
+  - dialogueEvents: []
+    dialogue:
+    - Hello, my travelling friend!
+    - My name is Froggy, and I'm here to share with you an unpleasant story about
+      our old friends, the robots.
+    - Did you see those poor robots who were badly injured?
+    - Yes, there they are... they were our support workers, cute and adorable.
+    - But now they're... they're lying broken, their wires bending around and their
+      sensors glowing red nervously.
+    - My request to you, traveller, is that you help me fix these poor robots.
+    - Use these parts to fix this robot, to paraphrase.
+    - I may be able to support you in your future journey or even find you some useful
+      allies.
     endAfterDialogue: 0
     branchPoint:
-      question: question 1
+      question: So, my friend, will you help me in this task?
       answers:
-      - answerLabel: answer 1
-        missionEvents:
-        - missionId: 1
-          missionStatus: 2
-        - missionId: 2
-          missionStatus: 0
+      - answerLabel: That sounds like an important mission. Of course, I will help
+          you with this task.
         gameEvents:
         - {fileID: 11400000, guid: b0b1e088c1e56ad418d8d722eba85a8a, type: 2}
-        nextDialogueSection: 0
-      - answerLabel: answer 2
-        missionEvents: []
-        gameEvents: []
-        nextDialogueSection: -1
-      - answerLabel: answer 3
-        missionEvents:
-        - missionId: 2
-          missionStatus: 3
-        gameEvents: []
+        - {fileID: 11400000, guid: a0e496cbde86031408512e0a7b44b668, type: 2}
         nextDialogueSection: 1
-  - dialogue:
-    - phrase 3
+      - answerLabel: I'm sorry, but I have my own problems to attend to.
+        gameEvents: []
+        nextDialogueSection: 2
+  - dialogueEvents: []
+    dialogue:
+    - I promise to repay you for your help.
+    endAfterDialogue: 1
+    branchPoint:
+      question: 
+      answers: []
+  - dialogueEvents: []
+    dialogue:
+    - I am disappointed in you.
     endAfterDialogue: 1
     branchPoint:
       question: 

@@ -12,13 +12,13 @@ namespace LevelMission
         public string descriptionMission;
         public MissionStatus missionStatus;
 
-        protected virtual void ActivateMission()
+        public virtual void ActivateMission()
         {
             missionStatus = MissionStatus.Active;
             MissionManager.Instance.ShowNewMissionUI(nameMission, descriptionMission);
         }
 
-        protected virtual void DeactivateMission()
+        public virtual void DeactivateMission()
         {
             missionStatus = MissionStatus.Inactive;
             MissionManager.Instance.SetNameAndDescriptionMission("...", "...");
@@ -31,7 +31,7 @@ namespace LevelMission
             MissionManager.Instance.SetNameAndDescriptionMission("...", "...");
         }
 
-        protected virtual void FailedMission()
+        public virtual void FailedMission()
         {
             missionStatus = MissionStatus.Failed;
             MissionManager.Instance.ShowMissionCompleatedUI(nameMission + "Failed", descriptionMission);
