@@ -611,8 +611,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentDialogueTree: {fileID: 11400000, guid: 1e29e3d3799f001409e30c65478938dd, type: 2}
-  _printSpeed: 0.1
-  _afterPrintDelay: 1
+  _printSpeed: 0.07
+  _afterPrintDelay: 2
   _answersStyleSheet: {fileID: 7433441132597879392, guid: 2d694b17611eb7a41a8eb8cefda34662, type: 3}
 --- !u!4 &532862253
 Transform:

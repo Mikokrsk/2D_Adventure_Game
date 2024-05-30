@@ -2389,6 +2389,11 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!82 &2071867376 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3541270750118857303, guid: ce7088d176426654aaec30f5b5997c7d, type: 3}
+  m_PrefabInstance: {fileID: 958374699914281126}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &958374699914281126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2437,10 +2442,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3826580209846526558, guid: ce7088d176426654aaec30f5b5997c7d, type: 3}
+      propertyPath: _showMissionTabAction.m_Id
+      value: 34e01bc2-c644-4289-b80c-267f830c26ad
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826580209846526558, guid: ce7088d176426654aaec30f5b5997c7d, type: 3}
+      propertyPath: _showMissionTabAction.m_Name
+      value: Show Mission Tab
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826580209846526558, guid: ce7088d176426654aaec30f5b5997c7d, type: 3}
+      propertyPath: _showMissionTabAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826580209846526558, guid: ce7088d176426654aaec30f5b5997c7d, type: 3}
+      propertyPath: _showMissionTabAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 35901266-e74e-43ea-b74c-70e27d4f20f4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826580209846526558, guid: ce7088d176426654aaec30f5b5997c7d, type: 3}
+      propertyPath: _showMissionTabAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/tab
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826580209846526558, guid: ce7088d176426654aaec30f5b5997c7d, type: 3}
+      propertyPath: _showMissionTabAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Show Mission Tab
+      objectReference: {fileID: 0}
     - target: {fileID: 4007355034243812923, guid: ce7088d176426654aaec30f5b5997c7d, type: 3}
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6470435136348234772, guid: ce7088d176426654aaec30f5b5997c7d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6520829228701830214, guid: ce7088d176426654aaec30f5b5997c7d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8630047355613653230, guid: ce7088d176426654aaec30f5b5997c7d, type: 3}
+      propertyPath: _backgroundMusicSource
+      value: 
+      objectReference: {fileID: 2071867376}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
